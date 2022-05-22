@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp
-iomanip
--
-iostream
--
-Bankaccount.h
-C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
-
-C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.h
 vector
 -
 sstream
 -
 datetime.hpp
-C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
+C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.hpp
 
-C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
+C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.hpp
 string
 -
 ostream
 -
+
+C:/Users/nikla/Documents/Studium/PE2/banking08/main.cpp
+iostream
+-
+unistd.h
+-
+Bankaccount.h
+C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.h
 

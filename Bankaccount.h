@@ -32,9 +32,16 @@ protected:
 public:
     Giro(float dispoLimit = 0, float debitInterest = 1.5);
     void withdrawl(float amount = 0,DateTime d = DateTime());
+    void transferToDifferentAccount(string accountnumber ="00000000000",int amount = 0 ,DateTime d = DateTime());
     ~Giro();
 
 };
 
-
+class Savingsaccount : public Bankaccount{
+protected:
+    float _interestRate;
+public:
+    Savingsaccount(float interestRate = 0);
+    void withdrawl(float amount = 0, DateTime d = DateTime());
+};
 #endif //BANKING08_BANKACCOUNT_H
