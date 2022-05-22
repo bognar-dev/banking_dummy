@@ -1,0 +1,3 @@
+C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir
+C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/rebuild_cache.dir
