@@ -2,9 +2,12 @@ file(REMOVE_RECURSE
   "Banking08.exe"
   "Banking08.exe.manifest"
   "Banking08.pdb"
+  "CMakeFiles/Banking08.dir/Activity.cpp.obj"
   "CMakeFiles/Banking08.dir/Bankaccount.cpp.obj"
+  "CMakeFiles/Banking08.dir/bank.cpp.obj"
   "CMakeFiles/Banking08.dir/datetime.cpp.obj"
   "CMakeFiles/Banking08.dir/main.cpp.obj"
+  "CMakeFiles/Banking08.dir/owner.cpp.obj"
   "libBanking08.dll.a"
 )
 

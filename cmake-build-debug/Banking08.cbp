@@ -80,10 +80,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Activity.cpp">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Activity.h">
+			<Option target="Banking08"/>
+		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.cpp">
 			<Option target="Banking08"/>
 		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.h">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/bank.cpp">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/bank.h">
 			<Option target="Banking08"/>
 		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.cpp">
@@ -93,6 +105,12 @@
 			<Option target="Banking08"/>
 		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/main.cpp">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/owner.cpp">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/owner.h">
 			<Option target="Banking08"/>
 		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/CMakeLists.txt">

@@ -7,10 +7,25 @@
 #include "Bankaccount.h"
 
 Bankaccount::Bankaccount() {
+    //TODO add parameters
     _balance = 0;
     _statementRecords.size();
 }
 
+void Bankaccount::interestBalance(DateTime date) {
+    //TODO
+}
+
+string Bankaccount::toString(){
+    //TODO
+};
+int Bankaccount::getOwner() {
+    //TODO
+}
+
+vector<Activity*>Bankaccount::getActivities(){
+    //TODO
+}
 //Bankaccount::~Bankaccount() = default;
 
 void Giro::payIn(float amount, DateTime d) {

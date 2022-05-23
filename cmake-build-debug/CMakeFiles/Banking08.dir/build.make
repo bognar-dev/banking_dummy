@@ -104,11 +104,53 @@ CMakeFiles/Banking08.dir/Bankaccount.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Banking08.dir/Bankaccount.cpp.s"
 	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nikla\Documents\Studium\PE2\banking08\Bankaccount.cpp -o CMakeFiles\Banking08.dir\Bankaccount.cpp.s
 
+CMakeFiles/Banking08.dir/bank.cpp.obj: CMakeFiles/Banking08.dir/flags.make
+CMakeFiles/Banking08.dir/bank.cpp.obj: ../bank.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Banking08.dir/bank.cpp.obj"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Banking08.dir\bank.cpp.obj -c C:\Users\nikla\Documents\Studium\PE2\banking08\bank.cpp
+
+CMakeFiles/Banking08.dir/bank.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Banking08.dir/bank.cpp.i"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nikla\Documents\Studium\PE2\banking08\bank.cpp > CMakeFiles\Banking08.dir\bank.cpp.i
+
+CMakeFiles/Banking08.dir/bank.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Banking08.dir/bank.cpp.s"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nikla\Documents\Studium\PE2\banking08\bank.cpp -o CMakeFiles\Banking08.dir\bank.cpp.s
+
+CMakeFiles/Banking08.dir/owner.cpp.obj: CMakeFiles/Banking08.dir/flags.make
+CMakeFiles/Banking08.dir/owner.cpp.obj: ../owner.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Banking08.dir/owner.cpp.obj"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Banking08.dir\owner.cpp.obj -c C:\Users\nikla\Documents\Studium\PE2\banking08\owner.cpp
+
+CMakeFiles/Banking08.dir/owner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Banking08.dir/owner.cpp.i"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nikla\Documents\Studium\PE2\banking08\owner.cpp > CMakeFiles\Banking08.dir\owner.cpp.i
+
+CMakeFiles/Banking08.dir/owner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Banking08.dir/owner.cpp.s"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nikla\Documents\Studium\PE2\banking08\owner.cpp -o CMakeFiles\Banking08.dir\owner.cpp.s
+
+CMakeFiles/Banking08.dir/Activity.cpp.obj: CMakeFiles/Banking08.dir/flags.make
+CMakeFiles/Banking08.dir/Activity.cpp.obj: ../Activity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Banking08.dir/Activity.cpp.obj"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Banking08.dir\Activity.cpp.obj -c C:\Users\nikla\Documents\Studium\PE2\banking08\Activity.cpp
+
+CMakeFiles/Banking08.dir/Activity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Banking08.dir/Activity.cpp.i"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\nikla\Documents\Studium\PE2\banking08\Activity.cpp > CMakeFiles\Banking08.dir\Activity.cpp.i
+
+CMakeFiles/Banking08.dir/Activity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Banking08.dir/Activity.cpp.s"
+	C:\Users\nikla\Documents\Studium\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\nikla\Documents\Studium\PE2\banking08\Activity.cpp -o CMakeFiles\Banking08.dir\Activity.cpp.s
+
 # Object files for target Banking08
 Banking08_OBJECTS = \
 "CMakeFiles/Banking08.dir/main.cpp.obj" \
 "CMakeFiles/Banking08.dir/datetime.cpp.obj" \
-"CMakeFiles/Banking08.dir/Bankaccount.cpp.obj"
+"CMakeFiles/Banking08.dir/Bankaccount.cpp.obj" \
+"CMakeFiles/Banking08.dir/bank.cpp.obj" \
+"CMakeFiles/Banking08.dir/owner.cpp.obj" \
+"CMakeFiles/Banking08.dir/Activity.cpp.obj"
 
 # External object files for target Banking08
 Banking08_EXTERNAL_OBJECTS =
@@ -116,11 +158,14 @@ Banking08_EXTERNAL_OBJECTS =
 Banking08.exe: CMakeFiles/Banking08.dir/main.cpp.obj
 Banking08.exe: CMakeFiles/Banking08.dir/datetime.cpp.obj
 Banking08.exe: CMakeFiles/Banking08.dir/Bankaccount.cpp.obj
+Banking08.exe: CMakeFiles/Banking08.dir/bank.cpp.obj
+Banking08.exe: CMakeFiles/Banking08.dir/owner.cpp.obj
+Banking08.exe: CMakeFiles/Banking08.dir/Activity.cpp.obj
 Banking08.exe: CMakeFiles/Banking08.dir/build.make
 Banking08.exe: CMakeFiles/Banking08.dir/linklibs.rsp
 Banking08.exe: CMakeFiles/Banking08.dir/objects1.rsp
 Banking08.exe: CMakeFiles/Banking08.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Banking08.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Banking08.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Banking08.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

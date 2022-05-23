@@ -128,6 +128,30 @@ Banking08/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/build
 .PHONY : Banking08/fast
 
+Activity.obj: Activity.cpp.obj
+.PHONY : Activity.obj
+
+# target to build an object file
+Activity.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Activity.cpp.obj
+.PHONY : Activity.cpp.obj
+
+Activity.i: Activity.cpp.i
+.PHONY : Activity.i
+
+# target to preprocess a source file
+Activity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Activity.cpp.i
+.PHONY : Activity.cpp.i
+
+Activity.s: Activity.cpp.s
+.PHONY : Activity.s
+
+# target to generate assembly for a file
+Activity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Activity.cpp.s
+.PHONY : Activity.cpp.s
+
 Bankaccount.obj: Bankaccount.cpp.obj
 .PHONY : Bankaccount.obj
 
@@ -151,6 +175,30 @@ Bankaccount.s: Bankaccount.cpp.s
 Bankaccount.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Bankaccount.cpp.s
 .PHONY : Bankaccount.cpp.s
+
+bank.obj: bank.cpp.obj
+.PHONY : bank.obj
+
+# target to build an object file
+bank.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/bank.cpp.obj
+.PHONY : bank.cpp.obj
+
+bank.i: bank.cpp.i
+.PHONY : bank.i
+
+# target to preprocess a source file
+bank.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/bank.cpp.i
+.PHONY : bank.cpp.i
+
+bank.s: bank.cpp.s
+.PHONY : bank.s
+
+# target to generate assembly for a file
+bank.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/bank.cpp.s
+.PHONY : bank.cpp.s
 
 datetime.obj: datetime.cpp.obj
 .PHONY : datetime.obj
@@ -200,6 +248,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+owner.obj: owner.cpp.obj
+.PHONY : owner.obj
+
+# target to build an object file
+owner.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/owner.cpp.obj
+.PHONY : owner.cpp.obj
+
+owner.i: owner.cpp.i
+.PHONY : owner.i
+
+# target to preprocess a source file
+owner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/owner.cpp.i
+.PHONY : owner.cpp.i
+
+owner.s: owner.cpp.s
+.PHONY : owner.s
+
+# target to generate assembly for a file
+owner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/owner.cpp.s
+.PHONY : owner.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -209,15 +281,24 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Banking08
+	@echo ... Activity.obj
+	@echo ... Activity.i
+	@echo ... Activity.s
 	@echo ... Bankaccount.obj
 	@echo ... Bankaccount.i
 	@echo ... Bankaccount.s
+	@echo ... bank.obj
+	@echo ... bank.i
+	@echo ... bank.s
 	@echo ... datetime.obj
 	@echo ... datetime.i
 	@echo ... datetime.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... owner.obj
+	@echo ... owner.i
+	@echo ... owner.s
 .PHONY : help
 
 

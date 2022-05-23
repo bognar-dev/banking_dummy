@@ -9,25 +9,30 @@
 #include <vector>
 #include <sstream>
 #include "datetime.hpp"
+#include "Activity.h"
 
 using namespace std;
 
 class Bankaccount {
 protected:
+    int _number;
+    int _owner;
+    string _pinCode;
+    int _id;
+    DateTime _lastUpdate;
+    vector<Activity> _lastActivity;
     float _balance;
     vector<string> _statementRecords;
 public:
     Bankaccount();
-
     void virtual withdrawl(float amount = 0, DateTime d = DateTime()) = 0;
-
     void virtual payIn(float amount = 0, DateTime d = DateTime()) = 0;
-
+    void interestBalance(DateTime date);
+    string toString();
+    int getOwner();
+    vector<Activity*>getActivities();
     float balance();
-
-    //void transfer(float amount ,string accountnumber ,string discription , DateTime d);
     virtual string statement() = 0;
-    //virtual ~Bankaccount();
 };
 
 class Giro : public Bankaccount {
@@ -37,16 +42,10 @@ protected:
 
 public:
     Giro(float dispoLimit = 0, float debitInterest = 1.5);
-
     void withdrawl(float amount = 0, DateTime d = DateTime());
-
     void payIn(float amount = 0, DateTime d = DateTime());
-
-    void
-    transfer(float amount = 0, string accountnumber = "00000000000", string discription = "", DateTime d = DateTime());
-
+    void transfer(float amount = 0, string accountnumber = "00000000000", string discription = "", DateTime d = DateTime());
     string statement();
-    //~Giro();
 
 };
 
@@ -55,11 +54,8 @@ protected:
     float _interestRate;
 public:
     Savingsaccount(float interestRate = 0);
-
     void withdrawl(float amount = 0, DateTime d = DateTime());
-
     void payIn(float amount = 0, DateTime d = DateTime());
-
     string statement();
 };
 
