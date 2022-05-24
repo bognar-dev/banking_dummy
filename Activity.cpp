@@ -8,6 +8,10 @@ Activity::Activity(string information,float amount, DateTime day){
     _amount = amount;
     _day = day;
 }
+Activity::Activity(string information, DateTime day) {
+    _information = information;
+    _day = day;
+}
 
 string Activity::toString(){
     ostringstream os;

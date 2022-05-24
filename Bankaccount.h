@@ -20,19 +20,22 @@ protected:
     string _pinCode;
     int _id;
     DateTime _lastUpdate;
-    vector<Activity> _lastActivity;
+    vector< Activity*> _activities;
     float _balance;
     vector<string> _statementRecords;
 public:
-    Bankaccount();
+    Bankaccount(float balance = 0,int accNumber = 0, int owner = 0, string pinCode = "",int id = 0);
     void virtual withdrawl(float amount = 0, DateTime d = DateTime()) = 0;
     void virtual payIn(float amount = 0, DateTime d = DateTime()) = 0;
     void interestBalance(DateTime date);
     string toString();
-    int getOwner();
+    int getOwner() const;
+    int getID();
+    void addActivity(Activity activity);
     vector<Activity*>getActivities();
     float balance();
     virtual string statement() = 0;
+    bool operator ==(const Bankaccount& b) const;
 };
 
 class Giro : public Bankaccount {

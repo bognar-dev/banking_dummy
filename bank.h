@@ -19,7 +19,7 @@ protected:
     vector<owner> _owners;
     string _bankname;
 public:
-    bank();
+    bank(string bankName);
     void writeToFile(string filename);
     void readFromFile(string filename);
     void createGiro(int ownerID, int pinCode,float startAmount,int dispolimit, DateTime date= DateTime());
@@ -29,7 +29,7 @@ public:
     void newCustomer(string name,string adress);
     void removeCustomer(int id);
     void editCustomer(int id,string name,string adress);
-    string customerList();
+    vector<owner> customerList();
     void payIn(int accountID,float amount,DateTime date = DateTime());
     void withdraw(int accountID,float amount,DateTime date = DateTime());
     void transfer(int ownerAccountID,int recieverAccountID ,float amount,string message,DateTime date = DateTime());

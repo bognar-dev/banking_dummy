@@ -9,16 +9,26 @@
 #include "Bankaccount.h"
 
 using namespace std;
+struct Address{
+    friend ostream &operator<<(ostream& os, const Address& a);
+public:
+    string _street;
+    int _housenumber;
+    string _postcode;
+    Address(string street = "", int housenumber = 0, string postcode = "");
+};
 
 class owner {
 protected:
     int _number;
-    int _userid;
+    int _userID;
     string _name;
-    string _adress;
+    Address _address;
+    vector<Bankaccount*> _accounts;
 public:
+    owner(int number,int userID, string name, Address address = Address());
     void setName(string name);
-    void setAdress(string address);
+    void setAddress(Address address);
     string toString();
     owner parse(string line);
     void addAccount(Bankaccount account);

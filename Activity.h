@@ -18,6 +18,7 @@ protected:
     DateTime _day;
 public:
     Activity(string information, float amount,DateTime day = DateTime());
+    Activity(string information, DateTime day = DateTime());
     string toString();
     Activity parse(string line);
 };

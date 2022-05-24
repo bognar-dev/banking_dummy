@@ -1,30 +1,46 @@
 //
 // Created by nikla on 22/05/2022.
 //
-
+//TODO interst Rate, etc...
 #include <iomanip>
 #include <iostream>
 #include "Bankaccount.h"
 
-Bankaccount::Bankaccount() {
-    //TODO add parameters
-    _balance = 0;
+Bankaccount::Bankaccount(float balance ,int accNumber, int owner, string pinCode,int id) {
+    _number = accNumber;
+    _owner = owner;
+    _pinCode = pinCode;
+    _id = id;
+    _balance = balance;
     _statementRecords.size();
+    _activities.size();
 }
 
+bool Bankaccount::operator==(const Bankaccount &b) const {
+    return (_id == b._id);
+}
 void Bankaccount::interestBalance(DateTime date) {
     //TODO
 }
 
 string Bankaccount::toString(){
-    //TODO
+    ostringstream os;
+    os<<"Accountnumber: "<< _number << " User: " << _owner << " ID: "<<_id<<" Last activity: "<< _lastUpdate;
+    return os.str();
 };
-int Bankaccount::getOwner() {
-    //TODO
+int Bankaccount::getOwner() const {
+    return _owner;
 }
 
+int Bankaccount::getID() {
+    return _id;
+}
+
+void Bankaccount::addActivity(Activity activity) {
+    _activities.push_back(&activity);
+}
 vector<Activity*>Bankaccount::getActivities(){
-    //TODO
+    return _activities;
 }
 //Bankaccount::~Bankaccount() = default;
 
@@ -35,6 +51,7 @@ void Giro::payIn(float amount, DateTime d) {
        << "|" << setw(25);
     //if (_balance < 0) { os << "-"; }
     os << setw(20) << _balance << "|";
+    _activities.push_back(new Activity("PayIn: ",amount,d));
     _statementRecords.push_back(os.str());
 }
 
@@ -61,6 +78,7 @@ void Giro::withdrawl(float amount, DateTime d) {
            << amount << "|" << setw(25);
         os << setw(20) << _balance << "|";
         _statementRecords.push_back(os.str());
+        _activities.push_back(new Activity("Withdrawl: ",amount,d));
     } catch (runtime_error &e) {
         std::cerr << e.what() << endl;
     }
@@ -77,6 +95,7 @@ void Giro::transfer(float amount, string accountnumber, string discription, Date
         os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << accountnumber
            << "|" << "-" << setw(24) << amount << "|" << setw(25);
         os << setw(20) << _balance << "|";
+        _activities.push_back(new Activity(("Transfer, "+discription+" : "),amount,d));
         _statementRecords.push_back(os.str());
     } catch (runtime_error &e) {
         std::cerr << e.what() << endl;
@@ -111,6 +130,7 @@ void Savingsaccount::withdrawl(float amount, DateTime d) {
         ostringstream os;
         os << setw(17) << d.toString("en_GB.UTF8") << "|" << "-" << setw(24) << amount << "|" << setw(25);
         os << setw(20) << _balance;
+        _activities.push_back(new Activity("Withdrawl: ",amount,d));
         _statementRecords.push_back(os.str());
     } catch (runtime_error &e) {
         std::cerr << e.what() << endl;
@@ -136,6 +156,7 @@ void Savingsaccount::payIn(float amount, DateTime d) {
     ostringstream os;
     os << setw(17) << d.toString("en_GB.UTF8") << "|" << "+" << setw(24) << amount << "|" << setw(25);
     os << setw(20) << _balance;
+    _activities.push_back(new Activity("PayIn: ",amount,d));
     _statementRecords.push_back(os.str());
 }
 
