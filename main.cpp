@@ -5,73 +5,96 @@
 #include <iostream>
 #include <string>
 #include "bank.h"
+
 using namespace std;
 
 // *******************************************************************
 int hauptMenue() {
     cout << "\n\n";
     cout << "+------------------------+\n";
-    cout << "| Hauptmenü:             |\n";
+    cout << "| Mainmenu:             |\n";
     cout << "+------------------------+\n\n";
-    cout << "  (1) Daten aus einer Datei einlesen\n";
-    cout << "  (2) Daten in einer Datei abspeichern\n";
-    cout << "  (3) Stammdaten-Dialog\n";
-    cout << "  (4) einzahlen\n";
-    cout << "  (5) auszahlen\n";
-    cout << "  (6) überweisen\n";
-    cout << "  (7) Kontoauszug anzeigen\n";
-    cout << "  (8) Kundenliste anzeigen\n";
-    cout << "  (9) Kontenliste anzeigen\n";
-    cout << " (10) Zinsgutschrift\n\n";
-    cout << " (11) Programm beenden\n";
+    cout << "  (1) Read from file\n";
+    cout << "  (2) Write to file\n";
+    cout << "  (3) Data-Dialog\n";
+    cout << "  (4) PayIn\n";
+    cout << "  (5) Withdraw\n";
+    cout << "  (6) Transfer\n";
+    cout << "  (7) Get statement\n";
+    cout << "  (8) Show users\n";
+    cout << "  (9) Show accounts\n";
+    cout << " (10) Interest balance\n\n";
+    cout << " (11) Exit\n";
     cout << "------------------------------------------------\n";
-    cout << " Ihre Auswahl? ";
+    cout << " Please choose: ";
 
-    int auswahl;
-    cin >> auswahl;
+    int choice;
+    cin >> choice;
 
-    return auswahl;
+    return choice;
 }
 
 // *******************************************************************
 int stammdatenMenue() {
     cout << "\n\n";
     cout << "+------------------------+\n";
-    cout << "| Stammdaten pflegen:    |\n";
+    cout << "| Change data:    |\n";
     cout << "+------------------------+\n\n";
-    cout << " (1) Kunde anlegen\n";
-    cout << " (2) Kunde entfernen\n";
-    cout << " (3) Kundendaten ändern\n";
-    cout << " (4) Konto anlegen\n";
-    cout << " (5) Konto entfernen\n\n";
-    cout << " (6) Abbruch\n";
+    cout << " (1) New customer\n";
+    cout << " (2) Delete customer\n";
+    cout << " (3) Change customer\n";
+    cout << " (4) New account\n";
+    cout << " (5) Delete account\n\n";
+    cout << " (6) Return\n";
     cout << " -----------------------------------------------\n";
-    cout << " Ihre Auswahl?\n";
+    cout << " Please Choose: \n";
 
-    int auswahl;
-    cin >> auswahl;
+    int choice;
+    cin >> choice;
 
-    return auswahl;
+    return choice;
 }
 
 // *******************************************************************
 int main() {
-    int auswahl;
-
+    int choice;
+    bank Bank("DKB");
     do {
-        auswahl = hauptMenue();
-        if (auswahl == 1) {          // lesen aus Datei
-        } else if (auswahl == 2) {   // schreiben in Datei
-        } else if (auswahl == 3) {   // Stammdaten-Dialog
-        } else if (auswahl == 4) {   // einzahlen
-        } else if (auswahl == 5) {   // auszahlen
-        } else if (auswahl == 6) {   // überweisen
-        } else if (auswahl == 7) {   // Kontoauszug anzeigen
-        } else if (auswahl == 8) {   // Kundenliste anzeigen
-        } else if (auswahl == 9) {   // Kontenliste anzeigen
-        } else if (auswahl == 10) {  // Zinsgutschrift
-        } else if (auswahl != 11)
-            cout << "unbekannte Auswahl\n";
-    } while (auswahl != 11);
-}
+        choice = hauptMenue();
+        if (choice == 1) {
+            Bank.readFromFile("data.dat");
+            // lesen aus Datei
+        } else if (choice == 2) {
+            Bank.writeToFile("data.dat");
+            // schreiben in Datei
+        } else if (choice == 3) {
+            //============================================================
+                    int choice2 = stammdatenMenue();
+                    do{
+                    if (choice == 1) {
+                        //new customer
+                    } else if (choice == 2) {
+                        //delete customer
+                    }else if(choice2 == 3){
+                        //change customer
+                    }else if (choice == 4){
+                        // new account
+                    } else if (choice == 5) {
+                        // delete account
+                    } else if (choice != 6) {
+                        cout << "no valid input!\n";
+                    }}while(choice2 != 6);
+            //============================================================
+            } else if (choice == 4) {   // einzahlen
+            } else if (choice == 5) {   // auszahlen
+            } else if (choice == 6) {   // überweisen
+            } else if (choice == 7) {   // Kontoauszug anzeigen
+            } else if (choice == 8) {   // Kundenliste anzeigen
+            } else if (choice == 9) {   // Kontenliste anzeigen
+            } else if (choice == 10) {  // Zinsgutschrift
+            } else if (choice != 11)
+                cout << "no valid input!\n";
+        }
+        while (choice != 11);
+    }
 
