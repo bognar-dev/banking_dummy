@@ -18,6 +18,8 @@ protected:
     vector<Bankaccount *> _bankaccounts;
     vector<owner> _owners;
     string _bankname;
+    static int _usercount;
+    static int _accountcount;
 public:
     bank(string bankName);
     void writeToFile(string filename);

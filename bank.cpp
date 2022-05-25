@@ -4,6 +4,12 @@
 
 #include <iostream>
 #include "bank.h"
+
+int bank:: _usercount = 0;
+
+int bank:: _accountcount = 0;
+
+
 bank::bank(string bankName){
     _bankname = bankName;
 }
