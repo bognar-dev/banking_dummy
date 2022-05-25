@@ -27,10 +27,10 @@ void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime
                 _bankaccounts.push_back(new Giro(ownerID, startAmount, dispolimit));
             }
         }
-        throw runtime_error("No account was found with the id ");
+        throw runtime_error("No account was found with the id " + to_string(ownerID));
     }catch(runtime_error &e) {
-        sleep(1);
         cerr << e.what() << endl;
+
     }
 }
 
