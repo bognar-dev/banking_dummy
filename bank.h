@@ -24,13 +24,13 @@ public:
     bank(string bankName);
     void writeToFile(string filename);
     void readFromFile(string filename);
-    void createGiro(int ownerID, int pinCode,float startAmount,int dispolimit, DateTime date= DateTime());
-    void createSavingsAccount(int ownerID, int pinCode,float startAmount,int interestRate, DateTime date= DateTime());
+    void createGiro(int ownerID,float startAmount,float dispolimit = 0, DateTime date= DateTime());
+    void createSavingsAccount(int ownerID,float startAmount,int interestRate = 0, DateTime date= DateTime());
     void removeAccount(int number);
     string listOfAccounts();
     void newCustomer(string name,Address adress);
     void removeCustomer(int id);
-    void editCustomer(int id,string name,string adress);
+    void editCustomer(int id,string name,Address adress);
     string customerList();
     void payIn(int accountID,float amount,DateTime date = DateTime());
     void withdraw(int accountID,float amount,DateTime date = DateTime());

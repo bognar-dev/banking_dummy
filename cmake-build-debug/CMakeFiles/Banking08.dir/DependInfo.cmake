@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/Activity.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Activity.cpp.obj"
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Bankaccount.cpp.obj"
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/bank.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/bank.cpp.obj"
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/datetime.cpp.obj"
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/main.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/main.cpp.obj"
-  "C:/Users/nikla/Documents/Studium/PE2/banking08/owner.cpp" "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/CMakeFiles/Banking08.dir/owner.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/Activity.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Activity.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Bankaccount.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/bank.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/bank.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/datetime.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/datetime.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/main.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/main.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/owner.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/owner.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

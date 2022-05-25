@@ -5,17 +5,26 @@
 #include <iomanip>
 #include <iostream>
 #include "Bankaccount.h"
-
-Bankaccount::Bankaccount(float balance ,int accNumber, int owner, string pinCode,int id) {
-    _number = accNumber;
+int Bankaccount::_number = 9000;
+Bankaccount::Bankaccount(float balance, int owner, int id) {
+    _number = _number++;
     _owner = owner;
-    _pinCode = pinCode;
+    _pinCode = Bankaccount::randomPIN();
     _id = id;
     _balance = balance;
     _statementRecords.size();
     _activities.size();
 }
 
+string Bankaccount::randomPIN() {
+    srand((unsigned int) __TIME__);
+    string pin;
+    for (int i = 0; i < 4; ++i) {
+        pin += pin + to_string((rand()%10));
+    }
+    cout<<pin<<endl;
+    return pin;
+}
 bool Bankaccount::operator==(const Bankaccount &b) const {
     return (_id == b._id);
 }
@@ -60,9 +69,13 @@ float Bankaccount::balance() {
     return _balance;
 }
 
-Giro::Giro(float dispolimit, float debitinterest) : Bankaccount() {
+Giro::Giro(int owner, float startAmount,float dispolimit, float debitinterest) : Bankaccount() {
+
+    _owner = owner;
+    _balance = startAmount;
     _dispoLimit = dispolimit;
     _debitInterest = debitinterest;
+    _activities.push_back(new Activity("Account created"));
 }
 
 //Giro::~Giro() = default;
@@ -117,8 +130,11 @@ string Giro::statement() {
     return statement.str();
 }
 
-Savingsaccount::Savingsaccount(float interestRate) : Bankaccount() {
+Savingsaccount::Savingsaccount(int owner, float startAmount, float interestRate) : Bankaccount() {
     _interestRate = interestRate;
+    _owner = owner;
+    _balance = startAmount;
+    _activities.push_back(new Activity("Account created"));
 }
 
 void Savingsaccount::withdrawl(float amount, DateTime d) {

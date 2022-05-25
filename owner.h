@@ -11,18 +11,21 @@
 using namespace std;
 struct Address{
     friend ostream &operator<<(ostream& os, const Address& a);
+    friend istream &operator>>(istream& os, Address& a);
 public:
     string _street;
     int _housenumber;
     string _postcode;
     Address(string street = "", int housenumber = 0, string postcode = "");
-    bool operator==(const Address& a){
+    bool operator==(const Address& a) const{
         return a._street == _street && a._housenumber == _housenumber && a._postcode == _postcode;
     }
 };
 
 class owner {
 protected:
+    static int _userIDgeneration;
+    static int _usercount;
     int _number;
     int _userID;
     string _name;
@@ -30,7 +33,7 @@ protected:
     vector<Bankaccount*> _accounts;
 public:
     owner(int number,int userID, string name, Address address = Address());
-    owner();
+    owner(string name, Address address);
     void setName(string name);
     void setAddress(Address address);
     string toString();
@@ -42,6 +45,8 @@ public:
     bool operator==(const owner& o){
         return _name == o._name && _address == o._address && _accounts.size() == o._accounts.size();
     }
+
+
 };
 
 

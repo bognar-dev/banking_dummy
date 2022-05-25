@@ -2,17 +2,32 @@
 // Created by nikla on 23/05/2022.
 //
 
+#include <iomanip>
+#include <iostream>
 #include "owner.h"
 ostream &operator<<(ostream &os, const Address &a) {
     os<<a._street<<" "<<a._housenumber<<" "<<a._postcode;
     return os;
 }
+
+istream &operator>>(istream &is, Address &a) {
+    is>>a._street>>a._housenumber;
+    is>>a._postcode;
+
+    return is;
+}
+
+
 Address::Address(string street, int housenumber, string postcode) {
     _street = street;
     _postcode = postcode;
     _housenumber = housenumber;
 }
 
+
+
+int owner::_usercount = 1;
+int owner::_userIDgeneration = 1;
 
 owner::owner(int number, int userID, string name, Address address) {
     _number = number;
@@ -21,11 +36,11 @@ owner::owner(int number, int userID, string name, Address address) {
     _address = address;
 }
 
-owner::owner(){
-    _number = 0;
-    _userID = 0;
-    _name = "";
-    _address = Address();
+owner::owner(string name, Address address){
+    _number = _usercount++;
+    _userID = _userIDgeneration++;
+    _name = name;
+    _address = address;
 }
 
 void owner::setName(string name) {
@@ -38,7 +53,7 @@ void owner::setAddress(Address address) {
 
 string owner::toString() {
     ostringstream os;
-    os<<"Number: "<<_number<<" User: "<<_userID<<" Name: "<<_name<<" Address: "<< _address;
+    os<<"Number: "<<_number<<" UserID: "<<_userID<<" Name: "<<_name<<" Address: "<< _address;
     return os.str();
 }
 

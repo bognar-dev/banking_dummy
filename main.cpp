@@ -73,16 +73,60 @@ int main() {
                         choice2 = stammdatenMenue();
                     if (choice2 == 1) {
                         //new customer
+                        string name;
+                        Address address;
+                        cout << "please enter the name" << endl;
+                        cin >> name;
+                        cout << "please enter the address (Street,NR,Address)"<<endl;
+                        cin >> address;
+                        Bank.newCustomer(name, address);
+
                         //Bank.newCustomer("Hans", Address("Mullerstr",33,"41065"));
                     } else if (choice2 == 2) {
                         //delete customer
+                        int id;
+                        cout << "Give the userID to delete the user"<<endl;
+                        cin>>id;
+                        Bank.removeCustomer(id);
                     }else if(choice2 == 3){
                         //change customer
+                        int id;
+                        cout << "Give the userID to change the user"<<endl;
+                        cin>>id;
+                        string name;
+                        Address address;
+                        cout << "please enter the name" << endl;
+                        cin >> name;
+                        cout << "please enter the address (Street,NR,Address)"<<endl;
+                        cin >> address;
+                        Bank.editCustomer(id,name,address);
 
                     }else if (choice2 == 4){
-                        // new account
+                        int id;
+                        int choice3;
+                        float balance;
+                        cout << "Give the userID to Add an account" << endl;
+                        cin>>id;
+                        cout<<"give starting Balance"<<endl;
+                        cin>> balance;
+                        cout<<"for Giro enter 1, for Savingsaccount 2"<<endl;
+                        cin>>choice3;
+                        if(choice3 ==1){
+                            float dispolimit;
+                            cout<<"What is the dispolimit?"<<endl;
+                            cin>>dispolimit;
+                            Bank.createGiro(id,balance,dispolimit);
+                        }
+                        else if(choice3 == 2){
+                            Bank.createSavingsAccount(id,balance);
+                        }
+
                     } else if (choice2 == 5) {
                         // delete account
+                        int number;
+                        cout<<"Please provide the account number to delete"<<endl;
+                        cin >> number;
+                        Bank.removeAccount(number);
                     } else if (choice2 != 6) {
                         cout << "no valid input!\n";
                     }}while(choice2 != 6);
@@ -92,10 +136,10 @@ int main() {
             } else if (choice == 6) {   // überweisen
             } else if (choice == 7) {   // Kontoauszug anzeigen
             } else if (choice == 8) {
-            //cout<<Bank.customerList()<<endl;// Kundenliste anzeigen
+            cout<<Bank.customerList()<<endl;// Kundenliste anzeigen
             } else if (choice == 9) {
             // Kontenliste anzeigen
-            //Bank.listOfAccounts();
+            cout<<Bank.listOfAccounts()<<endl;
             } else if (choice == 10) {  // Zinsgutschrift
             } else if (choice != 11)
                 cout << "no valid input!\n";

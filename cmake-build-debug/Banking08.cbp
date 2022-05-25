@@ -8,112 +8,112 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug"/>
+				<Option working_dir="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Banking08">
-				<Option output="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Banking08.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug"/>
+				<Option output="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Banking08.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 Banking08"/>
-					<CompileFile command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 Banking08"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Banking08/fast">
-				<Option output="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Banking08.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug"/>
+				<Option output="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Banking08.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include-fixed"/>
-					<Add directory="C:/Users/nikla/Documents/Studium/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 Banking08/fast"/>
-					<CompileFile command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 Banking08/fast"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug"/>
+				<Option working_dir="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug"/>
+				<Option working_dir="C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/nikla/Documents/Studium/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Activity.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Activity.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Activity.h">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Activity.h">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/Bankaccount.h">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/bank.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/bank.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/bank.h">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/bank.h">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/datetime.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/datetime.hpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/main.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/main.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/owner.cpp">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/owner.cpp">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/owner.h">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/owner.h">
 			<Option target="Banking08"/>
 		</Unit>
-		<Unit filename="C:/Users/nikla/Documents/Studium/PE2/banking08/CMakeLists.txt">
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -5,9 +5,6 @@
 #include <iostream>
 #include "bank.h"
 
-int bank:: _usercount = 0;
-
-int bank:: _accountcount = 0;
 
 
 bank::bank(string bankName){
@@ -22,16 +19,26 @@ void bank::readFromFile(string filename) {
     //todo
 }
 
-void bank::createGiro(int ownerID, int pinCode, float startAmount, int dispolimit, DateTime date) {
-    //TODO
+void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {
+    _bankaccounts.push_back(new Giro(ownerID, startAmount, dispolimit));
 }
 
-void bank::createSavingsAccount(int ownerID, int pinCode, float startAmount, int interestRate, DateTime date) {
+void bank::createSavingsAccount(int ownerID, float startAmount, int interestRate, DateTime date) {
     //TODO
 }
 
 void bank::removeAccount(int number) {
     //TODO
+    try {
+        for (auto& account:_bankaccounts) {
+            if(account->getID() == number){
+
+            }
+        }
+        throw runtime_error("No account was found with the id ");
+    }catch(runtime_error &e) {
+        cerr << e.what() << endl;
+    }
 }
 
 string bank::customerList(){
@@ -97,9 +104,8 @@ string bank::listOfAccounts() {
 }
 
 void bank::newCustomer(string name, Address address) {
-    owner newuser;
-    newuser.setName(name);
-    newuser.setAddress(address);
+    owner newuser(name,address);
+
     try{
         for (auto& user : _owners)
         if(newuser == user){
@@ -115,7 +121,7 @@ void bank::removeCustomer(int id) {
 //TODO
 }
 
-void bank::editCustomer(int id, string name, string adress) {
+void bank::editCustomer(int id, string name, Address adress) {
 //TODO
 }
 
