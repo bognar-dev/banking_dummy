@@ -7,12 +7,12 @@
 
 #include <vector>
 #include <string>
+#include <ctime>
 #include "owner.h"
 #include "Bankaccount.h"
 #include "datetime.hpp"
 
 using namespace std;
-
 class bank {
 protected:
     vector<Bankaccount *> _bankaccounts;
@@ -26,10 +26,10 @@ public:
     void createSavingsAccount(int ownerID, int pinCode,float startAmount,int interestRate, DateTime date= DateTime());
     void removeAccount(int number);
     string listOfAccounts();
-    void newCustomer(string name,string adress);
+    void newCustomer(string name,Address adress);
     void removeCustomer(int id);
     void editCustomer(int id,string name,string adress);
-    vector<owner> customerList();
+    string customerList();
     void payIn(int accountID,float amount,DateTime date = DateTime());
     void withdraw(int accountID,float amount,DateTime date = DateTime());
     void transfer(int ownerAccountID,int recieverAccountID ,float amount,string message,DateTime date = DateTime());

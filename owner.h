@@ -16,6 +16,9 @@ public:
     int _housenumber;
     string _postcode;
     Address(string street = "", int housenumber = 0, string postcode = "");
+    bool operator==(const Address& a){
+        return a._street == _street && a._housenumber == _housenumber && a._postcode == _postcode;
+    }
 };
 
 class owner {
@@ -27,14 +30,18 @@ protected:
     vector<Bankaccount*> _accounts;
 public:
     owner(int number,int userID, string name, Address address = Address());
+    owner();
     void setName(string name);
     void setAddress(Address address);
     string toString();
     owner parse(string line);
-    void addAccount(Bankaccount account);
-    void removeAccount(Bankaccount account);
+    void addAccount(Bankaccount* account);
+    void removeAccount(Bankaccount* account);
     vector<Bankaccount*> getAccounts();
-
+    int getID();
+    bool operator==(const owner& o){
+        return _name == o._name && _address == o._address && _accounts.size() == o._accounts.size();
+    }
 };
 
 

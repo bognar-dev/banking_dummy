@@ -4,7 +4,7 @@
 
 #include "owner.h"
 ostream &operator<<(ostream &os, const Address &a) {
-    os<<a._street<<a._housenumber<<a._postcode;
+    os<<a._street<<" "<<a._housenumber<<" "<<a._postcode;
     return os;
 }
 Address::Address(string street, int housenumber, string postcode) {
@@ -21,6 +21,13 @@ owner::owner(int number, int userID, string name, Address address) {
     _address = address;
 }
 
+owner::owner(){
+    _number = 0;
+    _userID = 0;
+    _name = "";
+    _address = Address();
+}
+
 void owner::setName(string name) {
     _name = name;
 }
@@ -31,7 +38,7 @@ void owner::setAddress(Address address) {
 
 string owner::toString() {
     ostringstream os;
-    os<<"Number: "<<_number<<" User: "<<_userID<<"Name: "<<_name<<"Address: "<< _address;
+    os<<"Number: "<<_number<<" User: "<<_userID<<" Name: "<<_name<<" Address: "<< _address;
     return os.str();
 }
 
@@ -39,13 +46,13 @@ owner owner::parse(string line) {
     //TODO what is a parser?
 }
 
-void owner::addAccount(Bankaccount account) {
-    _accounts.push_back(&account);
+void owner::addAccount(Bankaccount* account) {
+    _accounts.push_back(account);
 }
 
-void owner::removeAccount(Bankaccount account) {
+void owner::removeAccount(Bankaccount* account) {
     for (auto& a : _accounts){
-        if(a == &account) {
+        if(a == account) {
             _accounts.pop_back();
         }
     }
@@ -53,4 +60,8 @@ void owner::removeAccount(Bankaccount account) {
 
 vector<Bankaccount*> owner::getAccounts(){
     return _accounts;
+}
+
+int owner::getID(){
+    return _userID;
 }

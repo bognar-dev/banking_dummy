@@ -28,8 +28,19 @@ void bank::removeAccount(int number) {
     //TODO
 }
 
-vector<owner> bank::customerList(){
-    return _owners;
+string bank::customerList(){
+    ostringstream os;
+    try {
+    if(_owners.size()==0){
+        throw runtime_error(" No customers yet");
+    }
+    for(auto& user:_owners){
+        os<<user.toString()<<"\n";
+    }
+    }catch (runtime_error &e) {
+        cerr<<e.what()<<endl;
+    }
+    return os.str();
 }
 
 void bank::payIn(int accountID, float amount, DateTime date) {
@@ -69,5 +80,36 @@ string bank::getstatement(int accountID) {
     }catch(runtime_error &e) {
         cerr << e.what() << endl;
     }
+}
+
+string bank::listOfAccounts() {
+    ostringstream os;
+    for (auto& account:_bankaccounts){
+    os<< account->toString()<<"\n";
+    }
+    return os.str();
+}
+
+void bank::newCustomer(string name, Address address) {
+    owner newuser;
+    newuser.setName(name);
+    newuser.setAddress(address);
+    try{
+        for (auto& user : _owners)
+        if(newuser == user){
+            throw runtime_error("Customer already exists");
+        }
+    }catch(runtime_error &e) {
+        cerr << e.what() << endl;
+    }
+    _owners.push_back(newuser);
+}
+
+void bank::removeCustomer(int id) {
+//TODO
+}
+
+void bank::editCustomer(int id, string name, string adress) {
+//TODO
 }
 

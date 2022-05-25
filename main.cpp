@@ -12,7 +12,7 @@ using namespace std;
 int hauptMenue() {
     cout << "\n\n";
     cout << "+------------------------+\n";
-    cout << "| Mainmenu:             |\n";
+    cout << "| Menu:             |\n";
     cout << "+------------------------+\n\n";
     cout << "  (1) Read from file\n";
     cout << "  (2) Write to file\n";
@@ -38,7 +38,7 @@ int hauptMenue() {
 int stammdatenMenue() {
     cout << "\n\n";
     cout << "+------------------------+\n";
-    cout << "| Change data:    |\n";
+    cout << "| Data menu:    |\n";
     cout << "+------------------------+\n\n";
     cout << " (1) New customer\n";
     cout << " (2) Delete customer\n";
@@ -54,7 +54,6 @@ int stammdatenMenue() {
 
     return choice;
 }
-
 // *******************************************************************
 int main() {
     int choice;
@@ -68,20 +67,23 @@ int main() {
             Bank.writeToFile("data.dat");
             // schreiben in Datei
         } else if (choice == 3) {
-            //============================================================
-                    int choice2 = stammdatenMenue();
+            //===========================================================
+            int choice2;
                     do{
-                    if (choice == 1) {
+                        choice2 = stammdatenMenue();
+                    if (choice2 == 1) {
                         //new customer
-                    } else if (choice == 2) {
+                        //Bank.newCustomer("Hans", Address("Mullerstr",33,"41065"));
+                    } else if (choice2 == 2) {
                         //delete customer
                     }else if(choice2 == 3){
                         //change customer
-                    }else if (choice == 4){
+
+                    }else if (choice2 == 4){
                         // new account
-                    } else if (choice == 5) {
+                    } else if (choice2 == 5) {
                         // delete account
-                    } else if (choice != 6) {
+                    } else if (choice2 != 6) {
                         cout << "no valid input!\n";
                     }}while(choice2 != 6);
             //============================================================
@@ -89,8 +91,11 @@ int main() {
             } else if (choice == 5) {   // auszahlen
             } else if (choice == 6) {   // überweisen
             } else if (choice == 7) {   // Kontoauszug anzeigen
-            } else if (choice == 8) {   // Kundenliste anzeigen
-            } else if (choice == 9) {   // Kontenliste anzeigen
+            } else if (choice == 8) {
+            //cout<<Bank.customerList()<<endl;// Kundenliste anzeigen
+            } else if (choice == 9) {
+            // Kontenliste anzeigen
+            //Bank.listOfAccounts();
             } else if (choice == 10) {  // Zinsgutschrift
             } else if (choice != 11)
                 cout << "no valid input!\n";
