@@ -25,6 +25,7 @@ void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime
         for (auto& account:_bankaccounts) {
             if(account->getID() == ownerID){
                 _bankaccounts.push_back(new Giro(ownerID, startAmount, dispolimit));
+                return;
             }
         }
         throw runtime_error("No account was found with the id " + to_string(ownerID));
@@ -36,16 +37,27 @@ void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime
 
 
 
-void bank::createSavingsAccount(int ownerID, float startAmount, int interestRate, DateTime date) {
+void bank::createSavingsAccount(int ownerID, float startAmount, float interestRate, DateTime date) {
+    try {
+        for (auto& account:_bankaccounts) {
+            if(account->getID() == ownerID){
+                _bankaccounts.push_back(new Savingsaccount(ownerID, startAmount,interestRate));
+            }
+        }
+        throw runtime_error("No account was found with the id " + to_string(ownerID));
+    }catch(runtime_error &e) {
+        cerr << e.what() << endl;
+
+    }
     //TODO
 }
 
 void bank::removeAccount(int number) {
     //TODO
     try {
-        for (auto& account:_bankaccounts) {
-            if(account->getID() == number){
-
+        for (int i = 0; i < _bankaccounts.size(); i++) {
+            if(_bankaccounts[i]->getID() == number){
+                _bankaccounts.erase(_bankaccounts.begin()+i);
             }
         }
         throw runtime_error("No account was found with the id ");

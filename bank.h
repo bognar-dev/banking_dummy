@@ -25,7 +25,7 @@ public:
     void writeToFile(string filename);
     void readFromFile(string filename);
     void createGiro(int ownerID,float startAmount,float dispolimit = 0, DateTime date= DateTime());
-    void createSavingsAccount(int ownerID,float startAmount,int interestRate = 0, DateTime date= DateTime());
+    void createSavingsAccount(int ownerID,float startAmount,float interestRate = 0, DateTime date= DateTime());
     void removeAccount(int number);
     string listOfAccounts();
     void newCustomer(string name,Address adress);
