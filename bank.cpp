@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <unistd.h>
 #include "bank.h"
 
 
@@ -20,8 +21,20 @@ void bank::readFromFile(string filename) {
 }
 
 void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {
-    _bankaccounts.push_back(new Giro(ownerID, startAmount, dispolimit));
+    try {
+        for (auto& account:_bankaccounts) {
+            if(account->getID() == ownerID){
+                _bankaccounts.push_back(new Giro(ownerID, startAmount, dispolimit));
+            }
+        }
+        throw runtime_error("No account was found with the id ");
+    }catch(runtime_error &e) {
+        sleep(1);
+        cerr << e.what() << endl;
+    }
 }
+
+
 
 void bank::createSavingsAccount(int ownerID, float startAmount, int interestRate, DateTime date) {
     //TODO
