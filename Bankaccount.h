@@ -15,11 +15,12 @@ using namespace std;
 
 class Bankaccount {
 protected:
+    static int _accountCount;
     static int _number;
-    static string _randomPIN;
     int _owner;
     string _pinCode;
     int _id;
+    int _accountnr;
     DateTime _lastUpdate;
     vector< Activity*> _activities;
     float _balance;
@@ -29,15 +30,22 @@ public:
     void virtual withdrawl(float amount = 0, DateTime d = DateTime()) = 0;
     void virtual payIn(float amount = 0, DateTime d = DateTime()) = 0;
     void interestBalance(DateTime date);
+    void addRecord(Bankaccount* account,string record);
     string toString();
     string randomPIN();
     int getOwner() const;
     int getID();
+    string getPIN();
     void addActivity(Activity activity);
     vector<Activity*>getActivities();
     float balance();
+    void changeBalance(float amount);
+    virtual void transfer(float amount, int accountnumber,int reiceiver, string discription , DateTime d) = 0;
+    virtual void transferTo(float amount , int accountnumber  , int reiceiver , string discription , DateTime d = DateTime()) = 0;
     virtual string statement() = 0;
     bool operator ==(const Bankaccount& b) const;
+
+
 };
 
 class Giro : public Bankaccount {
@@ -49,7 +57,8 @@ public:
     Giro(int owner,float startbalance,float dispoLimit = 0, float debitInterest = 1.5);
     void withdrawl(float amount = 0, DateTime d = DateTime());
     void payIn(float amount = 0, DateTime d = DateTime());
-    void transfer(float amount = 0, string accountnumber = "00000000000", string discription = "", DateTime d = DateTime());
+    void transfer(float amount = 0, int accountnumber  = 0, int reiceiver = 0, string discription = "", DateTime d = DateTime());
+    void transferTo(float amount = 0, int accountnumber  = 0, int reiceiver = 0, string discription = "", DateTime d = DateTime());
     string statement();
 
 };
@@ -62,6 +71,8 @@ public:
     void withdrawl(float amount = 0, DateTime d = DateTime());
     void payIn(float amount = 0, DateTime d = DateTime());
     string statement();
+    void transfer(float amount , int accountnumber , int reiceiver , string discription , DateTime d);
+    void transferTo(float amount , int accountnumber , int reiceiver, string discription , DateTime d);
 };
 
 #endif //BANKING08_BANKACCOUNT_H

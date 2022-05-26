@@ -6,27 +6,25 @@
 #include <iostream>
 #include "Bankaccount.h"
 int Bankaccount::_number = 9000;
+int Bankaccount::_accountCount = 0;
 Bankaccount::Bankaccount(float balance, int owner, int id) {
-    _number = _number++;
+    _accountnr = _number++;
     _owner = owner;
     _pinCode = Bankaccount::randomPIN();
-    _id = id;
+    _id = _accountCount++;
     _balance = balance;
-    _statementRecords.size();
-    _activities.size();
 }
 
 string Bankaccount::randomPIN() {
     srand((unsigned int) __TIME__);
     string pin;
     for (int i = 0; i < 4; ++i) {
-        pin += pin + to_string((rand()%10));
+        pin += to_string((rand()%10));
     }
-    cout<<pin<<endl;
     return pin;
 }
 bool Bankaccount::operator==(const Bankaccount &b) const {
-    return (_id == b._id);
+    return (_number == b._number);
 }
 void Bankaccount::interestBalance(DateTime date) {
     //TODO
@@ -34,15 +32,19 @@ void Bankaccount::interestBalance(DateTime date) {
 
 string Bankaccount::toString(){
     ostringstream os;
-    os<<"Accountnumber: "<< _number << " User: " << _owner << " ID: "<<_id<<" Last activity: "<< _lastUpdate;
+    os<<"Accountnumber: "<< _accountnr << " Owner: " << _owner << " ID: "<<_id<<" Last activity: "<< _lastUpdate;
     return os.str();
-};
+}
+
+string Bankaccount::getPIN() {
+    return _pinCode;
+}
 int Bankaccount::getOwner() const {
     return _owner;
 }
 
 int Bankaccount::getID() {
-    return _id;
+    return Bankaccount::_accountnr;
 }
 
 void Bankaccount::addActivity(Activity activity) {
@@ -69,13 +71,16 @@ float Bankaccount::balance() {
     return _balance;
 }
 
-Giro::Giro(int owner, float startAmount,float dispolimit, float debitinterest) : Bankaccount() {
+void Bankaccount::addRecord(Bankaccount *account,string record) {
+    account->_statementRecords.push_back(record);
+}
 
+Giro::Giro(int owner, float startAmount,float dispolimit, float debitinterest) : Bankaccount() {
     _owner = owner;
     _balance = startAmount;
     _dispoLimit = dispolimit;
     _debitInterest = debitinterest;
-    _activities.push_back(new Activity("Account created"));
+    _activities.push_back(new Activity("Account created",DateTime()));
 }
 
 //Giro::~Giro() = default;
@@ -97,7 +102,10 @@ void Giro::withdrawl(float amount, DateTime d) {
     }
 }
 
-void Giro::transfer(float amount, string accountnumber, string discription, DateTime d) {
+void Bankaccount::changeBalance(float amount) {
+    _balance += amount;
+}
+void Giro::transfer(float amount, int accountnumber, int receiver, string discription, DateTime d) {
     try {
         if (_balance - amount <= 0) {
             throw runtime_error("Your balance cant be negative!");
@@ -105,8 +113,22 @@ void Giro::transfer(float amount, string accountnumber, string discription, Date
         _balance -= amount;
 
         ostringstream os;
-        os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << accountnumber
+        os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << receiver
            << "|" << "-" << setw(24) << amount << "|" << setw(25);
+        os << setw(20) << _balance << "|";
+        _activities.push_back(new Activity(("Transfer, "+discription+" : "),amount,d));
+        _statementRecords.push_back(os.str());
+    } catch (runtime_error &e) {
+        std::cerr << e.what() << endl;
+    }
+}
+void Giro::transferTo(float amount, int accountnumber, int receiver, string discription, DateTime d) {
+    try {
+        _balance += amount;
+
+        ostringstream os;
+        os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << accountnumber
+           << "|" << "+" << setw(24) << amount << "|" << setw(25);
         os << setw(20) << _balance << "|";
         _activities.push_back(new Activity(("Transfer, "+discription+" : "),amount,d));
         _statementRecords.push_back(os.str());
@@ -117,7 +139,7 @@ void Giro::transfer(float amount, string accountnumber, string discription, Date
 
 string Giro::statement() {
     ostringstream statement;
-    statement << setw(17) << "Date" << "|" << setw(25) << "Discription" << "|" << setw(25) << "Receiver" << "|"
+    statement << setw(17) << "Date" << "|" << setw(25) << "Discription" << "|" << setw(25) << "Receiver/Sender" << "|"
               << setw(25) << "Withdrawl/Deposit" << "|";
     statement << setw(20) << "Balance" << "|" << "\n";
     for (auto &record: _statementRecords) {
@@ -176,3 +198,10 @@ void Savingsaccount::payIn(float amount, DateTime d) {
     _statementRecords.push_back(os.str());
 }
 
+void Savingsaccount::transfer(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
+
+}
+
+void Savingsaccount::transferTo(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
+
+}
