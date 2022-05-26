@@ -14,6 +14,14 @@ sstream
 datetime.hpp
 C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
 
+C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp
+iomanip
+-
+iostream
+-
+Bankaccount.h
+C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+
 C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
 vector
 -
@@ -24,37 +32,9 @@ C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
 Activity.h
 C:/Users/nikla/Documents/Studium/Banking08/Activity.h
 
-C:/Users/nikla/Documents/Studium/Banking08/bank.h
-vector
--
-string
--
-ctime
--
-owner.h
-C:/Users/nikla/Documents/Studium/Banking08/owner.h
-Bankaccount.h
-C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
-datetime.hpp
-C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
-
 C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
 string
 -
 ostream
 -
-
-C:/Users/nikla/Documents/Studium/Banking08/main.cpp
-iostream
--
-string
--
-bank.h
-C:/Users/nikla/Documents/Studium/Banking08/bank.h
-
-C:/Users/nikla/Documents/Studium/Banking08/owner.h
-string
--
-Bankaccount.h
-C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
 

@@ -121,6 +121,8 @@ void bank::transfer(int ownerAccountNr, int recieverAccountID, float amount, str
                 accountTO = account;
                 found = true;
             }
+        }
+        for (auto &account: _bankaccounts) {
             if (account->getID() == ownerAccountNr) {
                 if(!found){
                     throw runtime_error("No receiver account with ID " +to_string(recieverAccountID));

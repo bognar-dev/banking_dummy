@@ -87,7 +87,7 @@ Giro::Giro(int owner, float startAmount,float dispolimit, float debitinterest) :
 
 void Giro::withdrawl(float amount, DateTime d) {
     try {
-        if ((_balance - amount) < _dispoLimit) {
+        if ((_balance - amount) < -(_dispoLimit)) {
             throw runtime_error("Your dispolimit has been exeeded!");
         }
         _balance -= amount;
