@@ -22,8 +22,8 @@ int intInput(string message, long long int minLimit = LONG_LONG_MIN, long long i
     std::string line;
     int num = 0;
     //split onto multiple lines for readability
-    while ((std::cout << message << endl)
-           && !(std::istringstream{line} >> num)
+    std::cout << message << endl;
+    while (!(std::istringstream{line} >> num)
            && (num <= minLimit || num >= maxLimit)
            && std::getline(std::cin, line)
             ) {
@@ -33,6 +33,7 @@ int intInput(string message, long long int minLimit = LONG_LONG_MIN, long long i
         }
         std::cerr << "Invalid input, try again." << std::endl;
     }
+    return 0;
 
 }
 
@@ -41,8 +42,8 @@ float floatInput(string message, float minLimit = FLT_MIN, float maxLimit = FLT_
     std::string line;
     float num = 0;
     //split onto multiple lines for readability
-    while ((std::cout << message << endl)
-           && !(std::istringstream{line} >> num)
+    std::cout << message << endl;
+    while (!(std::istringstream{line} >> num)
            && (num <= minLimit || num >= maxLimit)
            && std::getline(std::cin, line)
             ) {
@@ -149,11 +150,13 @@ int main() {
 
                 } else if (choice2 == 4) {
                     int id;
-                    int choice3;
+                    int choice3 = 0;
                     float balance;
                     id = intInput("Give the userID to Add an account", 1);
                     balance = floatInput("give starting Balance", 0);
-                    choice3 = intInput("for Giro enter 1, for Savingsaccount 2", 1, 2);
+
+                    do{
+                        choice3 = intInput("for Giro enter 1, for Savingsaccount 2", 1, 2);
                     if (choice3 == 1) {
                         float dispolimit;
                         dispolimit =floatInput("What is the dispolimit?",0);
@@ -161,6 +164,7 @@ int main() {
                     } else if (choice3 == 2) {
                         Bank.createSavingsAccount(id, balance);
                     }
+                    }while((choice3 != 1) && (choice3 != 2));
                     // final else statement add
                 } else if (choice2 == 5) {
                     // delete account
