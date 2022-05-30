@@ -51,6 +51,7 @@ public:
 
 class Giro : public Bankaccount {
     friend ostream& operator<<(ostream&, const Giro&);
+    friend istream& operator<<(istream&, const Giro&);
 protected:
     float _dispoLimit;
     float _debitInterest;
@@ -68,6 +69,7 @@ public:
 
 class Savingsaccount : public Bankaccount {
     //friend ostream& operator<<(ostream&, const Savingsaccount&);
+    friend istream& operator>>(istream&, const Savingsaccount&);
 protected:
     float _interestRate;
 public:

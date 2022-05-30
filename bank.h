@@ -14,6 +14,9 @@
 
 using namespace std;
 class bank {
+    friend Giro;
+    friend Bankaccount;
+    friend Savingsaccount;
 protected:
     vector<Bankaccount *> _bankaccounts;
     vector<owner> _owners;
@@ -22,8 +25,8 @@ protected:
     static int _accountcount;
 public:
     bank(string bankName);
-    void writeToFile(string filename);
-    void readFromFile(string filename);
+    void writeToFile(string bankaccountfile,string usersfile);
+    void readFromFile(string bankaccountfile,string usersfile);
     void createGiro(int ownerID,float startAmount,float dispolimit = 0, DateTime date= DateTime());
     void createSavingsAccount(int ownerID,float startAmount,float interestRate = 0, DateTime date= DateTime());
     void removeAccount(int number);

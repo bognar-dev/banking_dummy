@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <algorithm>
 #include <fstream>
+#include <string>
 #include "bank.h"
 
 
@@ -13,23 +14,53 @@ bank::bank(string bankName) {
     _bankname = bankName;
 }
 
-void bank::writeToFile(string filename) {
-    ofstream dat;
-    dat.open(filename, ios::out);
+void bank::writeToFile(string bank, string users) {
+    ofstream bankaccounts(bank, ios::out);
     for(auto* acc : _bankaccounts){
-       dat << acc->toFile() << endl;
+        bankaccounts << acc->toFile() << endl;
     }
+    bankaccounts.close();
+    ofstream userdat(users,ios::out);
     for(auto &user : _owners){
-        dat<< user.toString() <<endl;
+        userdat<< user.toFile() <<endl;
     }
-    dat.close();
+userdat.close();
+
 
 }
 
-void bank::readFromFile(string filename) {
-    ofstream dat;
-    dat.open(filename,ios::in);
+void bank::readFromFile(string bankaccounts,string users) {
+    ifstream bankacc(bankaccounts);
+    char buffer[256];
 
+    if (!bankacc)
+        throw runtime_error("could not open file");
+    while (!bankacc.eof()) {
+        /*istringstream is;
+        is >> _owner >> "#" >> _pinCode >> "#" >> _id >> "#" >> _accountnr >> "#" >> _lastUpdate >> "#" >> _balance >> "#";
+        for (string &record: _statementRecords) {
+            is >> record >> "," << endl;
+        }
+        is >> "#";
+        for (auto &activity: _activities) {
+            is >> activity->toString() >> "," << endl;
+        }
+        is << "#";
+        is << _interestRate << "#" << endl;
+*/
+        bankacc.getline(buffer,256,'#');
+        cout<< buffer <<endl;
+        cout<<"NEW ACCOUNT DATA"<<endl;
+    }
+    bankacc.close();
+    ifstream u(users);
+    if(!u)
+        throw std::runtime_error("Could not open user file");
+    while (!u.eof()) {
+        u.getline(buffer,256,'#');
+        cout<< buffer <<endl;
+        cout <<"NEW USER DATA" << endl;
+    }
 }
 
 void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {

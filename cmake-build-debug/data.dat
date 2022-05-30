@@ -1,10 +1,19 @@
-1¦7907¦0¦9000¦(30.05.2022 -- 12:46:56)¦66000¦05/30/22 12:47:29|                         |                         |+                    6000|        66000.000000|,
-¦information: Account created, amount: 0.00297912, (30.05.2022 -- 12:46:56),
-information: PayIn: , amount: 6000, (30.05.2022 -- 12:47:29),
-¦1232¦1.5¦
+1#3125#0#9000#(30.05.2022 -- 15:44:26)#6000#05/30/22 15:45:01|                         |                         |+                     100|         6100.000000|,
+05/30/22 15:46:45|              HalloDieter|                     9002|-                     100|         6000.000000|,
+#information: Account created amount: 0 date: (30.05.2022 -- 15:44:26),
+information: PayIn:  amount: 100 date: (30.05.2022 -- 15:45:01),
+information: Transfer, HalloDieter :  amount: 100 date: (30.05.2022 -- 15:46:45),
+#100#1.5#
 
-2¦7907¦2¦9002¦(30.05.2022 -- 12:47:09)¦8000¦¦information: Account created, amount: 7.57151e+32, (30.05.2022 -- 12:47:09),
-¦0¦
+2#3125#2#9002#(30.05.2022 -- 15:44:35)#9100#05/30/22 15:45:09|                         |                         |+                    1000|         9000.000000|,
+05/30/22 15:46:45|              HalloDieter|                     9000|+              100.000000|         9100.000000|,
+#information: Account created amount: 0 date: (30.05.2022 -- 15:44:35),
+information: PayIn:  amount: 1000 date: (30.05.2022 -- 15:45:09),
+information: Transfer, HalloDieter :  amount: 100 date: (30.05.2022 -- 15:46:45),
+#100#1.5#
 
-Number: 1 UserID: 1 Name: Detlef Address: Detlef 31 31423
-Number: 2 UserID: 2 Name: Hans Address: Hans 31 41231
+1#3125#4#9004#(30.05.2022 -- 15:44:47)#8100#05/30/22 15:45:16|+                     100|         8100.000000,
+#information: Account created amount: 0 date: (30.05.2022 -- 15:44:47),
+information: PayIn:  amount: 100 date: (30.05.2022 -- 15:45:16),
+#0#
+

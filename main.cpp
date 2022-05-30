@@ -63,10 +63,10 @@ int main() {
     do {
         choice = hauptMenue();
         if (choice == 1) {
-            Bank.readFromFile("data.dat");
+            Bank.readFromFile("data.dat","users.dat");
             // lesen aus Datei
         } else if (choice == 2) {
-            Bank.writeToFile("data.dat");
+            Bank.writeToFile("data.dat","users.dat");
             // schreiben in Datei
         } else if (choice == 3) {
             //===========================================================

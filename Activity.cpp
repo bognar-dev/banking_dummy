@@ -15,7 +15,7 @@ Activity::Activity(string information, DateTime day) {
 
 string Activity::toString(){
     ostringstream os;
-    os<<"information: "<<_information<< ", amount: "<<_amount<<", "<<_day;
+    os<<"information: "<<_information<< " amount: "<<_amount<<" date: "<<_day;
     return os.str();
 }
 

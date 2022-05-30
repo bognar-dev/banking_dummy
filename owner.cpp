@@ -56,6 +56,11 @@ string owner::toString() {
     os<<"Number: "<<_number<<" UserID: "<<_userID<<" Name: "<<_name<<" Address: "<< _address;
     return os.str();
 }
+string owner::toFile() {
+    ostringstream os;
+    os<<"#"<<_number<<"#"<<_userID<<"#"<<_name<<"#"<< _address;
+    return os.str();
+}
 
 owner owner::parse(string line) {
     //TODO what is a parser?

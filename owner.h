@@ -37,6 +37,7 @@ public:
     void setName(string name);
     void setAddress(Address address);
     string toString();
+    string toFile();
     owner parse(string line);
     void addAccount(Bankaccount* account);
     void removeAccount(Bankaccount* account);
