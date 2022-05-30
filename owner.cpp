@@ -11,8 +11,10 @@ ostream &operator<<(ostream &os, const Address &a) {
 }
 
 istream &operator>>(istream &is, Address &a) {
-    is>>a._street>>a._housenumber;
-    is>>a._postcode;
+
+    getline(is, a._street);
+    getline(is,a._postcode);
+    cin>>a._housenumber;
 
     return is;
 }

@@ -42,6 +42,8 @@ public:
     bool isAccountValid(int accountID);
     bool isCustomerValid(int userID);
     string getstatement(int accountID);
+    string getAction(int accountID);
+
 
 };
 

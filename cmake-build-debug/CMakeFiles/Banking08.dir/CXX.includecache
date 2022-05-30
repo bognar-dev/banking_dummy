@@ -24,20 +24,6 @@ C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
 Activity.h
 C:/Users/nikla/Documents/Studium/Banking08/Activity.h
 
-C:/Users/nikla/Documents/Studium/Banking08/bank.cpp
-iostream
--
-unistd.h
--
-algorithm
--
-fstream
--
-string
--
-bank.h
-C:/Users/nikla/Documents/Studium/Banking08/bank.h
-
 C:/Users/nikla/Documents/Studium/Banking08/bank.h
 vector
 -
@@ -57,6 +43,16 @@ string
 -
 ostream
 -
+
+C:/Users/nikla/Documents/Studium/Banking08/main.cpp
+iostream
+-
+string
+-
+cfloat
+-
+bank.h
+C:/Users/nikla/Documents/Studium/Banking08/bank.h
 
 C:/Users/nikla/Documents/Studium/Banking08/owner.h
 string

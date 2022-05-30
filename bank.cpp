@@ -270,3 +270,22 @@ void bank::editCustomer(int id, string name, Address adress) {
     }
 }
 
+string bank::getAction(int accountID) {
+    try {
+        for (auto &account: _bankaccounts) {
+            if (account->getID() == accountID) {
+                account->addActivity(Activity("Viewed activities"));
+                auto activities = account->getActivities();
+                ostringstream os;
+                for(auto &activity : activities){
+                    os<<activity->toString() << endl;
+                }
+                return os.str();
+            }
+        }
+        throw runtime_error(&"No account was found with the id "[accountID]);
+    } catch (runtime_error &e) {
+        cerr << e.what() << endl;
+    }
+}
+
