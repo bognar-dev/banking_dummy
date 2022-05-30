@@ -31,6 +31,7 @@ public:
     void virtual payIn(float amount = 0, DateTime d = DateTime()) = 0;
     void interestBalance(DateTime date);
     void addRecord(Bankaccount* account,string record);
+    string virtual toFile() = 0;
     string toString();
     string randomPIN();
     int getOwner() const;
@@ -42,13 +43,14 @@ public:
     void changeBalance(float amount);
     virtual void transfer(float amount, int accountnumber,int reiceiver, string discription , DateTime d) = 0;
     virtual void transferTo(float amount , int accountnumber  , int reiceiver , string discription , DateTime d = DateTime()) = 0;
-    virtual string statement() = 0;
+    virtual string statement () = 0;
     bool operator ==(const Bankaccount& b) const;
 
 
 };
 
 class Giro : public Bankaccount {
+    friend ostream& operator<<(ostream&, const Giro&);
 protected:
     float _dispoLimit;
     float _debitInterest;
@@ -60,10 +62,12 @@ public:
     void transfer(float amount = 0, int accountnumber  = 0, int reiceiver = 0, string discription = "", DateTime d = DateTime());
     void transferTo(float amount = 0, int accountnumber  = 0, int reiceiver = 0, string discription = "", DateTime d = DateTime());
     string statement();
+    string toFile();
 
 };
 
 class Savingsaccount : public Bankaccount {
+    //friend ostream& operator<<(ostream&, const Savingsaccount&);
 protected:
     float _interestRate;
 public:
@@ -73,6 +77,7 @@ public:
     string statement();
     void transfer(float amount , int accountnumber , int reiceiver , string discription , DateTime d);
     void transferTo(float amount , int accountnumber , int reiceiver, string discription , DateTime d);
+    string toFile();
 };
 
 #endif //BANKING08_BANKACCOUNT_H

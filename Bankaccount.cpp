@@ -7,6 +7,16 @@
 #include "Bankaccount.h"
 int Bankaccount::_number = 9000;
 int Bankaccount::_accountCount = 0;
+/*ostream& operator<<(ostream& os, const Bankaccount& acc){
+   os<< acc._owner<<"|"<<acc._pinCode<<"|"<<acc._id<<"|"<<acc._accountnr<<"|"<<acc._lastUpdate<<"|"<<acc._balance<<"|";
+   for(auto &record : acc._statementRecords){
+       os<<record<<","<<endl;
+   }
+   for(auto &activity : acc._activities){
+       os<<activity<<","<<endl;
+   }
+   return os;
+}*/
 Bankaccount::Bankaccount(float balance, int owner, int id) {
     _accountnr = _number++;
     _owner = owner;
@@ -44,7 +54,7 @@ int Bankaccount::getOwner() const {
 }
 
 int Bankaccount::getID() {
-    return Bankaccount::_accountnr;
+    return _accountnr;
 }
 
 void Bankaccount::addActivity(Activity activity) {
@@ -61,7 +71,7 @@ void Giro::payIn(float amount, DateTime d) {
     os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(26) << "|" << setw(26) << "|" << "+" << setw(24) << amount
        << "|" << setw(25);
     //if (_balance < 0) { os << "-"; }
-    os << setw(20) << _balance << "|";
+    os << setw(20) <<fixed<< _balance << "|";
     _activities.push_back(new Activity("PayIn: ",amount,d));
     _statementRecords.push_back(os.str());
 }
@@ -80,7 +90,21 @@ Giro::Giro(int owner, float startAmount,float dispolimit, float debitinterest) :
     _balance = startAmount;
     _dispoLimit = dispolimit;
     _debitInterest = debitinterest;
-    _activities.push_back(new Activity("Account created",DateTime()));
+    _activities.push_back(new Activity("Account created", DateTime()));
+}
+string Giro::toFile() {
+    ostringstream os;
+    os<<_owner<<"¦"<<_pinCode<<"¦"<<_id<<"¦"<<_accountnr<<"¦"<<_lastUpdate<<"¦"<<_balance<<"¦";
+    for(string &record : _statementRecords){
+        os<<record<<","<<endl;
+    }
+    os<<"¦";
+    for(Activity *activity : _activities){
+        os<<activity->toString()<<","<<endl;
+    }
+    os<<"¦";
+    os<<_dispoLimit<<"¦"<<_debitInterest<<"¦"<<endl;
+    return os.str();
 }
 
 //Giro::~Giro() = default;
@@ -94,7 +118,7 @@ void Giro::withdrawl(float amount, DateTime d) {
         ostringstream os;
         os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(26) << "|" << setw(26) << "|" << "-" << setw(24)
            << amount << "|" << setw(25);
-        os << setw(20) << _balance << "|";
+        os << setw(20) << fixed<<_balance << "|";
         _statementRecords.push_back(os.str());
         _activities.push_back(new Activity("Withdrawl: ",amount,d));
     } catch (runtime_error &e) {
@@ -105,6 +129,7 @@ void Giro::withdrawl(float amount, DateTime d) {
 void Bankaccount::changeBalance(float amount) {
     _balance += amount;
 }
+
 void Giro::transfer(float amount, int accountnumber, int receiver, string discription, DateTime d) {
     try {
         if (_balance - amount <= 0) {
@@ -115,7 +140,7 @@ void Giro::transfer(float amount, int accountnumber, int receiver, string discri
         ostringstream os;
         os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << receiver
            << "|" << "-" << setw(24) << amount << "|" << setw(25);
-        os << setw(20) << _balance << "|";
+        os << setw(20) << fixed << _balance << "|";
         _activities.push_back(new Activity(("Transfer, "+discription+" : "),amount,d));
         _statementRecords.push_back(os.str());
     } catch (runtime_error &e) {
@@ -128,8 +153,8 @@ void Giro::transferTo(float amount, int accountnumber, int receiver, string disc
 
         ostringstream os;
         os << setw(17) << d.toString("en_GB.UTF8") << "|" << setw(25) << discription << "|" << setw(25) << accountnumber
-           << "|" << "+" << setw(24) << amount << "|" << setw(25);
-        os << setw(20) << _balance << "|";
+           << "|" << "+" << setw(24) << fixed<<amount << "|" << setw(25);
+        os << setw(20) << fixed <<_balance << "|";
         _activities.push_back(new Activity(("Transfer, "+discription+" : "),amount,d));
         _statementRecords.push_back(os.str());
     } catch (runtime_error &e) {
@@ -146,9 +171,9 @@ string Giro::statement() {
         statement << record << "\n";
     }
     ostringstream balance_setprecision4;
-    balance_setprecision4 << _balance << setprecision(4);
+    balance_setprecision4 << fixed<<_balance << setprecision(4);
     string currentBalance = "Current Balance: " + balance_setprecision4.str();
-    statement << setw(116) << "==========" << "|" << "\n" << setw(116) << currentBalance << "|" << "\n";
+    statement << setw(116) << "==========" << "|" << "\n" << setw(116) <<fixed<< currentBalance << "|" << "\n";
     return statement.str();
 }
 
@@ -157,6 +182,21 @@ Savingsaccount::Savingsaccount(int owner, float startAmount, float interestRate)
     _owner = owner;
     _balance = startAmount;
     _activities.push_back(new Activity("Account created"));
+}
+
+string Savingsaccount::toFile(){
+    ostringstream os;
+    os<<_owner<<"¦"<<_pinCode<<"¦"<<_id<<"¦"<<_accountnr<<"¦"<<_lastUpdate<<"¦"<<_balance<<"¦";
+    for(string &record : _statementRecords){
+        os<<record<<","<<endl;
+    }
+    os<<"¦";
+    for(auto &activity : _activities){
+        os<<activity->toString()<<","<<endl;
+    }
+    os<<"¦";
+    os<<_interestRate<<"¦"<<endl;
+    return os.str();
 }
 
 void Savingsaccount::withdrawl(float amount, DateTime d) {
@@ -183,9 +223,9 @@ string Savingsaccount::statement() {
         statement << record << "\n";
     }
     ostringstream balance_setprecision4;
-    balance_setprecision4 << _balance << setprecision(4);
+    balance_setprecision4 <<fixed << _balance << setprecision(4);
     string currentBalance = "Current Balance: " + balance_setprecision4.str();
-    statement << setw(64) << "==========" << "\n" << setw(64) << currentBalance << "\n";
+    statement << setw(64) << "==========" << "\n" << setw(64) <<fixed<< currentBalance << "\n";
     return statement.str();
 }
 
@@ -193,7 +233,7 @@ void Savingsaccount::payIn(float amount, DateTime d) {
     _balance += amount;
     ostringstream os;
     os << setw(17) << d.toString("en_GB.UTF8") << "|" << "+" << setw(24) << amount << "|" << setw(25);
-    os << setw(20) << _balance;
+    os << setw(20) <<fixed<< _balance;
     _activities.push_back(new Activity("PayIn: ",amount,d));
     _statementRecords.push_back(os.str());
 }

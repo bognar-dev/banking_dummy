@@ -5,6 +5,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <algorithm>
+#include <fstream>
 #include "bank.h"
 
 
@@ -13,11 +14,22 @@ bank::bank(string bankName) {
 }
 
 void bank::writeToFile(string filename) {
-    //TODO
+    ofstream dat;
+    dat.open(filename, ios::out);
+    for(auto* acc : _bankaccounts){
+       dat << acc->toFile() << endl;
+    }
+    for(auto &user : _owners){
+        dat<< user.toString() <<endl;
+    }
+    dat.close();
+
 }
 
 void bank::readFromFile(string filename) {
-    //todo
+    ofstream dat;
+    dat.open(filename,ios::in);
+
 }
 
 void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {
@@ -91,8 +103,8 @@ void bank::payIn(int accountNr, float amount, DateTime date) {
                 account->payIn(amount);
                 return;
             }
-            throw runtime_error("No account with ID " + to_string(accountNr) + " found");
         }
+        throw runtime_error("No account with ID " + to_string(accountNr) + " found");
     } catch (runtime_error &e) {
         cerr << e.what() << endl;
     }
