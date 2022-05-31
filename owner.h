@@ -20,6 +20,7 @@ public:
     bool operator==(const Address& a) const{
         return a._street == _street && a._housenumber == _housenumber && a._postcode == _postcode;
     }
+    string toFile();
 };
 
 class owner {
@@ -43,6 +44,7 @@ public:
     void removeAccount(Bankaccount* account);
     vector<Bankaccount*> getAccounts();
     int getID();
+    void setOwnerCount(int count);
     bool operator==(const owner& o){
         return _name == o._name && _address == o._address && _accounts.size() == o._accounts.size();
     }

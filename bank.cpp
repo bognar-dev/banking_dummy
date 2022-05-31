@@ -16,52 +16,91 @@ bank::bank(string bankName) {
 
 void bank::writeToFile(string bank, string users) {
     ofstream bankaccounts(bank, ios::out);
-    for(auto* acc : _bankaccounts){
+    for (auto *acc: _bankaccounts) {
         bankaccounts << acc->toFile() << endl;
     }
     bankaccounts.close();
-    ofstream userdat(users,ios::out);
-    for(auto &user : _owners){
-        userdat<< user.toFile() <<endl;
+    ofstream userdat(users, ios::out);
+    for (auto &user: _owners) {
+        userdat << user.toFile() << endl;
     }
-userdat.close();
+    userdat.close();
 
 
 }
 
-void bank::readFromFile(string bankaccounts,string users) {
+void bank::readFromFile(string bankaccounts, string users) {
     ifstream bankacc(bankaccounts);
     char buffer[256];
 
     if (!bankacc)
-        throw runtime_error("could not open file");
-    while (!bankacc.eof()) {
-        /*istringstream is;
-        is >> _owner >> "#" >> _pinCode >> "#" >> _id >> "#" >> _accountnr >> "#" >> _lastUpdate >> "#" >> _balance >> "#";
-        for (string &record: _statementRecords) {
-            is >> record >> "," << endl;
+        throw runtime_error("could not open bank file");
+    int r = 0;
+    //int number, ID, housenumber;
+    //string name, postcode, street;
+    while (r <= 7 && !bankacc.eof()) {
+        bankacc.getline(buffer, 256, '#');
+        //cout << buffer << "\n";
+        stringstream is(buffer);
+
+        string s = is.str();
+        //cout << is.str() << endl;
+        if (r == 1) {
+           // is >> number;
+        } else if (r == 2) {
+           // is >> ID;
+        } else if (r == 3) {
+           // is >> name;
+        } else if (r == 4) {
+           // is >> street;
+        } else if (r == 5) {
+           // is >> housenumber;
+        } else if (r == 6) {
+           // is >> postcode;
+        } else if (r == 7) {
+            //Address a(street, housenumber, postcode);
+            //_owners.push_back(owner(number, ID, name, a));
+            r = 0;
         }
-        is >> "#";
-        for (auto &activity: _activities) {
-            is >> activity->toString() >> "," << endl;
-        }
-        is << "#";
-        is << _interestRate << "#" << endl;
-*/
-        bankacc.getline(buffer,256,'#');
-        cout<< buffer <<endl;
-        cout<<"NEW ACCOUNT DATA"<<endl;
+        r++;
     }
     bankacc.close();
     ifstream u(users);
-    if(!u)
+    if (!u)
         throw std::runtime_error("Could not open user file");
-    while (!u.eof()) {
-        u.getline(buffer,256,'#');
-        cout<< buffer <<endl;
-        cout <<"NEW USER DATA" << endl;
+    int i = 0;
+    int number, ID, housenumber;
+    string name, postcode, street;
+    while (i <= 7 && !u.eof()) {
+        u.getline(buffer, 256, '#');
+        //cout << buffer << "\n";
+        stringstream is(buffer);
+
+        string s = is.str();
+        //cout << is.str() << endl;
+        if (i == 1) {
+            is >> number;
+        } else if (i == 2) {
+            is >> ID;
+        } else if (i == 3) {
+            is >> name;
+        } else if (i == 4) {
+            is >> street;
+        } else if (i == 5) {
+            is >> housenumber;
+        } else if (i == 6) {
+            is >> postcode;
+        } else if (i == 7) {
+            Address a(street, housenumber, postcode);
+            _owners.push_back(owner(number, ID, name, a));
+            i = 0;
+        }
+        i++;
     }
+    _owners[0].setOwnerCount(number);
 }
+
+
 
 void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {
     try {
@@ -157,21 +196,21 @@ void bank::withdraw(int accountNr, float amount, DateTime date) {
 
 void bank::transfer(int ownerAccountNr, int recieverAccountID, float amount, string message, DateTime date) {
     bool found = false;
-    Bankaccount* accountTO;
+    Bankaccount *accountTO;
     try {
         for (auto &account: _bankaccounts) {
-            if(account->getID()== recieverAccountID){
+            if (account->getID() == recieverAccountID) {
                 accountTO = account;
                 found = true;
             }
         }
         for (auto &account: _bankaccounts) {
             if (account->getID() == ownerAccountNr) {
-                if(!found){
-                    throw runtime_error("No receiver account with ID " +to_string(recieverAccountID));
+                if (!found) {
+                    throw runtime_error("No receiver account with ID " + to_string(recieverAccountID));
                 }
-                accountTO->transferTo(amount,ownerAccountNr,recieverAccountID,message);
-                account->transfer(amount,ownerAccountNr,recieverAccountID,message,DateTime());
+                accountTO->transferTo(amount, ownerAccountNr, recieverAccountID, message);
+                account->transfer(amount, ownerAccountNr, recieverAccountID, message, DateTime());
                 //account->addActivity(Activity("transfered ",amount));
                 return;
             }
@@ -187,8 +226,8 @@ void bank::interestPayment(DateTime date) {
 }
 
 bool bank::isAccountValid(int accountID) {
-    for (auto &account:_bankaccounts) {
-        if(account->getID() == accountID){
+    for (auto &account: _bankaccounts) {
+        if (account->getID() == accountID) {
             return true;
         }
     }
@@ -196,8 +235,8 @@ bool bank::isAccountValid(int accountID) {
 }
 
 bool bank::isCustomerValid(int userID) {
-    for (auto &user:_owners) {
-        if(user.getID() == userID){
+    for (auto &user: _owners) {
+        if (user.getID() == userID) {
             return true;
         }
     }
@@ -256,7 +295,7 @@ void bank::removeCustomer(int id) {
 }
 
 void bank::editCustomer(int id, string name, Address adress) {
-    owner newOwner(name,adress);
+    owner newOwner(name, adress);
     try {
         for (int i = 0; i < _owners.size(); i++) {
             if (_owners[i].getID() == id) {
@@ -277,8 +316,8 @@ string bank::getAction(int accountID) {
                 account->addActivity(Activity("Viewed activities"));
                 auto activities = account->getActivities();
                 ostringstream os;
-                for(auto &activity : activities){
-                    os<<activity->toString() << endl;
+                for (auto &activity: activities) {
+                    os << activity->toString() << endl;
                 }
                 return os.str();
             }
