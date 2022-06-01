@@ -95,11 +95,11 @@ string Giro::toFile() {
     ostringstream os;
     os << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#" << _balance << "#";
     for (string &record: _statementRecords) {
-        os << record << "," << endl;
+        os << record << ",";
     }
     os << "#";
     for (Activity *activity: _activities) {
-        os << activity->toString() << "," << endl;
+        os << activity->toString() << ",";
     }
     os << "#";
     os << _dispoLimit << "#" << _debitInterest << "#" << endl;
@@ -188,11 +188,11 @@ string Savingsaccount::toFile() {
     ostringstream os;
     os << _owner <<"#" << _pinCode <<"#" << _id <<"#" << _accountnr <<"#" << _lastUpdate <<"#" << _balance <<"#";
     for (string &record: _statementRecords) {
-        os << record << "," << endl;
+        os << record << ",";
     }
     os <<"#";
     for (auto &activity: _activities) {
-        os << activity->toString() << "," << endl;
+        os << activity->toString() << ",";
     }
     os <<"#";
     os << _interestRate <<"#" << endl;

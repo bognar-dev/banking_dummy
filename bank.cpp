@@ -46,17 +46,17 @@ void bank::readFromFile(string bankaccounts, string users) {
         string s = is.str();
         //cout << is.str() << endl;
         if (r == 1) {
-           // is >> number;
+            // is >> number;
         } else if (r == 2) {
-           // is >> ID;
+            // is >> ID;
         } else if (r == 3) {
-           // is >> name;
+            // is >> name;
         } else if (r == 4) {
-           // is >> street;
+            // is >> street;
         } else if (r == 5) {
-           // is >> housenumber;
+            // is >> housenumber;
         } else if (r == 6) {
-           // is >> postcode;
+            // is >> postcode;
         } else if (r == 7) {
             //Address a(street, housenumber, postcode);
             //_owners.push_back(owner(number, ID, name, a));
@@ -92,14 +92,25 @@ void bank::readFromFile(string bankaccounts, string users) {
             is >> postcode;
         } else if (i == 7) {
             Address a(street, housenumber, postcode);
-            _owners.push_back(owner(number, ID, name, a));
+            try {
+                if (find(_owners.begin(), _owners.end(), owner(number, ID, name, a)) == _owners.end()) {
+                    for (auto owner: _owners) {
+                        if(owner.getID() == ID)
+                            throw runtime_error("Owner already exists with ID: " + to_string(ID));
+                    }
+                    _owners.emplace_back(number, ID, name, a);
+                }
+            }catch(runtime_error &e){
+                cerr<<e.what() << endl;
+            }
+
             i = 0;
         }
         i++;
     }
+
     _owners[0].setOwnerCount(number);
 }
-
 
 
 void bank::createGiro(int ownerID, float startAmount, float dispolimit, DateTime date) {
