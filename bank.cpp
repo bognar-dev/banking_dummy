@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include "bank.h"
+#include "tokenizer.hpp"
 
 
 bank::bank(string bankName) {
@@ -32,38 +33,32 @@ void bank::writeToFile(string bank, string users) {
 void bank::readFromFile(string bankaccounts, string users) {
     ifstream bankacc(bankaccounts);
     char buffer[256];
+    char bufferACC[5000];
 
     if (!bankacc)
         throw runtime_error("could not open bank file");
-    int r = 0;
-    //int number, ID, housenumber;
-    //string name, postcode, street;
-    while (r <= 7 && !bankacc.eof()) {
-        bankacc.getline(buffer, 256, '#');
-        //cout << buffer << "\n";
-        stringstream is(buffer);
-
-        string s = is.str();
-        //cout << is.str() << endl;
-        if (r == 1) {
-            // is >> number;
-        } else if (r == 2) {
-            // is >> ID;
-        } else if (r == 3) {
-            // is >> name;
-        } else if (r == 4) {
-            // is >> street;
-        } else if (r == 5) {
-            // is >> housenumber;
-        } else if (r == 6) {
-            // is >> postcode;
-        } else if (r == 7) {
-            //Address a(street, housenumber, postcode);
-            //_owners.push_back(owner(number, ID, name, a));
-            r = 0;
+    bool Giro = true;
+    int owner;
+    string pinCode;
+    int id;
+    int accountnr;
+    DateTime lastUpdate;
+    vector< Activity*> activities;
+    float balance;
+    vector<string> _statementRecords;
+    while (!bankacc.eof()) {
+        bankacc.getline(bufferACC, 5000);
+        Tokenizer tok(bufferACC, "#");
+        while (tok.hasMoreTokens()) {
+            string info = tok.nextToken();
+            if(info == "G")
+                Giro = true;
+            if(info == "S")
+                Giro = false;
         }
-        r++;
     }
+
+
     bankacc.close();
     ifstream u(users);
     if (!u)
@@ -95,13 +90,13 @@ void bank::readFromFile(string bankaccounts, string users) {
             try {
                 if (find(_owners.begin(), _owners.end(), owner(number, ID, name, a)) == _owners.end()) {
                     for (auto owner: _owners) {
-                        if(owner.getID() == ID)
+                        if (owner.getID() == ID)
                             throw runtime_error("Owner already exists with ID: " + to_string(ID));
                     }
                     _owners.emplace_back(number, ID, name, a);
                 }
-            }catch(runtime_error &e){
-                cerr<<e.what() << endl;
+            } catch (runtime_error &e) {
+                cerr << e.what() << endl;
             }
 
             i = 0;

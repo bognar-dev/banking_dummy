@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Banking08.dir/datetime.cpp.obj"
   "CMakeFiles/Banking08.dir/main.cpp.obj"
   "CMakeFiles/Banking08.dir/owner.cpp.obj"
+  "CMakeFiles/Banking08.dir/tokenizer.cpp.obj"
   "libBanking08.dll.a"
 )
 

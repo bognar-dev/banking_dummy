@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\nikla\Documents\Studium\PE2\banking08
+CMAKE_SOURCE_DIR = C:\Users\nikla\Documents\Studium\Banking08
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\nikla\Documents\Studium\Banking08\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\nikla\Documents\Studium\Banking08\cmake-build-debug\CMakeFiles C:\Users\nikla\Documents\Studium\Banking08\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\nikla\Documents\Studium\PE2\banking08\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\nikla\Documents\Studium\Banking08\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -272,6 +272,30 @@ owner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/owner.cpp.s
 .PHONY : owner.cpp.s
 
+tokenizer.obj: tokenizer.cpp.obj
+.PHONY : tokenizer.obj
+
+# target to build an object file
+tokenizer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/tokenizer.cpp.obj
+.PHONY : tokenizer.cpp.obj
+
+tokenizer.i: tokenizer.cpp.i
+.PHONY : tokenizer.i
+
+# target to preprocess a source file
+tokenizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/tokenizer.cpp.i
+.PHONY : tokenizer.cpp.i
+
+tokenizer.s: tokenizer.cpp.s
+.PHONY : tokenizer.s
+
+# target to generate assembly for a file
+tokenizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/tokenizer.cpp.s
+.PHONY : tokenizer.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -299,6 +323,9 @@ help:
 	@echo ... owner.obj
 	@echo ... owner.i
 	@echo ... owner.s
+	@echo ... tokenizer.obj
+	@echo ... tokenizer.i
+	@echo ... tokenizer.s
 .PHONY : help
 
 

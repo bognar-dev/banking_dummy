@@ -93,7 +93,7 @@ Giro::Giro(int owner, float startAmount, float dispolimit, float debitinterest) 
 
 string Giro::toFile() {
     ostringstream os;
-    os << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#" << _balance << "#";
+    os << "G#"<< _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#" << _balance << "#";
     for (string &record: _statementRecords) {
         os << record << ",";
     }
@@ -186,7 +186,7 @@ Savingsaccount::Savingsaccount(int owner, float startAmount, float interestRate)
 
 string Savingsaccount::toFile() {
     ostringstream os;
-    os << _owner <<"#" << _pinCode <<"#" << _id <<"#" << _accountnr <<"#" << _lastUpdate <<"#" << _balance <<"#";
+    os <<"S#" << _owner <<"#" << _pinCode <<"#" << _id <<"#" << _accountnr <<"#" << _lastUpdate <<"#" << _balance <<"#";
     for (string &record: _statementRecords) {
         os << record << ",";
     }
@@ -239,9 +239,10 @@ void Savingsaccount::payIn(float amount, DateTime d) {
 }
 
 void Savingsaccount::transfer(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
+ cerr<<"Cant transfer from savingsaccount"<<endl;
 
 }
 
 void Savingsaccount::transferTo(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
-
+    cerr<<"Cant transfer to savingsaccount"<<endl;
 }
