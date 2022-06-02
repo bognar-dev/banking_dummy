@@ -38,7 +38,7 @@ void bank::readFromFile(string bankaccounts, string users) {
     if (!bankacc)
         throw runtime_error("could not open bank file");
     bool Giro = true;
-    int owner;
+    int ownerOf;
     string pinCode;
     int id;
     int accountnr;
