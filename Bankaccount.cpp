@@ -91,9 +91,33 @@ Giro::Giro(int owner, float startAmount, float dispolimit, float debitinterest) 
     _activities.push_back(new Activity("Account created", 0, DateTime()));
 }
 
+Giro::Giro(int ownerOf,
+           string Pin,
+           int id,
+           int accNr,
+           DateTime lastUpdate,
+           float balance,
+           vector<string> statements,
+           vector<struct Activity *> activities,
+           float dispoLimit,
+           float Dispointerest): Bankaccount() {
+    _owner = ownerOf;
+    _pinCode = Pin;
+    _id = id;
+    _accountnr = accNr;
+    _lastUpdate = lastUpdate;
+    _balance = balance;
+    _statementRecords = statements;
+    _activities = activities;
+    _dispoLimit = dispoLimit;
+    _debitInterest = Dispointerest;
+
+}
+
 string Giro::toFile() {
     ostringstream os;
-    os << "G#"<< _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#" << _balance << "#";
+    os << "{" << "G#" << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#"
+       << _balance << "#";
     for (string &record: _statementRecords) {
         os << record << ",";
     }
@@ -102,7 +126,7 @@ string Giro::toFile() {
         os << activity->toString() << ",";
     }
     os << "#";
-    os << _dispoLimit << "#" << _debitInterest << "#" << endl;
+    os << _dispoLimit << "#" << _debitInterest << "}";
     return os.str();
 }
 
@@ -186,16 +210,17 @@ Savingsaccount::Savingsaccount(int owner, float startAmount, float interestRate)
 
 string Savingsaccount::toFile() {
     ostringstream os;
-    os <<"S#" << _owner <<"#" << _pinCode <<"#" << _id <<"#" << _accountnr <<"#" << _lastUpdate <<"#" << _balance <<"#";
+    os << "{" << "S#" << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#"
+       << _balance << "#";
     for (string &record: _statementRecords) {
         os << record << ",";
     }
-    os <<"#";
+    os << "#";
     for (auto &activity: _activities) {
         os << activity->toString() << ",";
     }
-    os <<"#";
-    os << _interestRate <<"#" << endl;
+    os << "#";
+    os << _interestRate << "}";
     return os.str();
 }
 
@@ -239,10 +264,25 @@ void Savingsaccount::payIn(float amount, DateTime d) {
 }
 
 void Savingsaccount::transfer(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
- cerr<<"Cant transfer from savingsaccount"<<endl;
+    cerr << "Cant transfer from savingsaccount" << endl;
 
 }
 
 void Savingsaccount::transferTo(float amount, int accountnumber, int reiceiver, string discription, DateTime d) {
-    cerr<<"Cant transfer to savingsaccount"<<endl;
+    cerr << "Cant transfer to savingsaccount" << endl;
+}
+
+Savingsaccount::Savingsaccount(int ownerOf, string Pin, int id, int accNr, DateTime lastUpdate, float balance,
+                               vector<string> statements, vector<struct Activity *> activities, float interestRate): Bankaccount() {
+    _owner = ownerOf;
+    _pinCode = Pin;
+    _id = id;
+    _accountnr = accNr;
+    _lastUpdate = lastUpdate;
+    _balance = balance;
+    _statementRecords = statements;
+    _activities = activities;
+    _interestRate = interestRate;
+
+
 }

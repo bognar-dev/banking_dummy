@@ -6,7 +6,17 @@
 using namespace std;
 
 #define SEC_PER_DAY  (60 * 60 * 24)
+istream& operator>>(istream& is, DateTime& dt) {
+    string d;
+    is >> d >> dt._day >> d;
+    is >> dt._month;
+    is >> d >> dt._year >> d;
+    is >> dt._hour >> d;
+    is >> dt._minute >> d;
+    is >> dt._second >> d;
 
+    return is;
+}
 // -------------------------------------------------------------------
 ostream& operator<<(ostream& os, const DateTime& dt) {
     os << "(" << setw(2) << setfill('0') << dt._day << ".";

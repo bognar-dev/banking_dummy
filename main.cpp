@@ -101,6 +101,9 @@ int stammdatenMenue() {
 
 // *******************************************************************
 int main() {
+    DateTime d(01,06,2022,13,52,41);
+
+    cout<< d.toString("en_GB.UTF8")<< endl;
     int choice;
     bank Bank("DKB");
     do {

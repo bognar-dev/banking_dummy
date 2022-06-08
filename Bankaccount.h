@@ -58,6 +58,16 @@ protected:
 
 public:
     Giro(int owner,float startbalance,float dispoLimit = 0, float debitInterest = 1.5);
+    Giro(int ownerOf,
+         string Pin,
+         int id,
+         int accNr,
+         DateTime lastUpdate,
+         float balance,
+         vector<string> statements,
+         vector<struct Activity *> activities,
+         float dispoLimit,
+         float Dispointerest);
     void withdrawl(float amount = 0, DateTime d = DateTime());
     void payIn(float amount = 0, DateTime d = DateTime());
     void transfer(float amount = 0, int accountnumber  = 0, int reiceiver = 0, string discription = "", DateTime d = DateTime());
@@ -74,6 +84,15 @@ protected:
     float _interestRate;
 public:
     Savingsaccount(int owner,float startAmount,float interestRate = 0);
+    Savingsaccount(int ownerOf,
+         string Pin,
+         int id,
+         int accNr,
+         DateTime lastUpdate,
+         float balance,
+         vector<string> statements,
+         vector<struct Activity *> activities,
+         float interestRate);
     void withdrawl(float amount = 0, DateTime d = DateTime());
     void payIn(float amount = 0, DateTime d = DateTime());
     string statement();

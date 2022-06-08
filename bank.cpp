@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <fstream>
 #include <string>
+#include <iterator>
 #include "bank.h"
 #include "tokenizer.hpp"
 
@@ -34,27 +35,134 @@ void bank::readFromFile(string bankaccounts, string users) {
     ifstream bankacc(bankaccounts);
     char buffer[256];
     char bufferACC[5000];
+    string bufferSingleAccount;
+    string fileStr(istreambuf_iterator<char>{bankacc}, {});
 
     if (!bankacc)
         throw runtime_error("could not open bank file");
-    bool Giro = true;
     int ownerOf;
     string pinCode;
     int id;
     int accountnr;
     DateTime lastUpdate;
-    vector< Activity*> activities;
+    vector<Activity *> activities;
     float balance;
-    vector<string> _statementRecords;
-    while (!bankacc.eof()) {
-        bankacc.getline(bufferACC, 5000);
-        Tokenizer tok(bufferACC, "#");
-        while (tok.hasMoreTokens()) {
-            string info = tok.nextToken();
-            if(info == "G")
-                Giro = true;
-            if(info == "S")
-                Giro = false;
+    vector<string> statementRecords;
+    float dispoLimit;
+    float debitInterest;
+    float interestRate;
+    Tokenizer tokSingleaccount(fileStr, "{}");
+    while (tokSingleaccount.hasMoreTokens()) {
+        string account = tokSingleaccount.nextToken();
+        //cout << account << endl;
+        Tokenizer tok(account, "#");
+        if (tok.countTokens() == 11) {
+            cout << "Giro:" << endl;
+            int x = 0;
+            while (tok.hasMoreTokens()) {
+                string info = tok.nextToken();
+                switch (x) {
+                    case 0:
+                        break;
+                    case 1:
+                        ownerOf = stoi(info);
+                        break;
+                    case 2:
+                        pinCode = info;
+                        break;
+                    case 3:
+                        id = stoi(info);
+                        break;
+                    case 4:
+                        accountnr = stoi(info);
+                        break;
+                    case 5: {
+                        stringstream is(info);
+                        is >> lastUpdate;
+                        break;
+                    }
+                    case 6:
+                        balance = stof(info);
+                        break;
+                    case 7:
+                        statementRecords.push_back(info);
+                        break;
+                    case 8:
+                        activities.push_back(new Activity(info));
+                        break;
+                    case 9:
+                        dispoLimit = stof(info);
+                        break;
+                    case 10:
+                        debitInterest = stof(info);
+                        try {
+                            for (auto acc: _bankaccounts) {
+                                if (acc->getID() == accountnr)
+                                    throw runtime_error("Bank account with ID " + to_string(acc->getID()));
+                            }
+                            _bankaccounts.push_back(new Giro(ownerOf, pinCode,id,accountnr,lastUpdate,balance,statementRecords,activities,dispoLimit,debitInterest));
+                        } catch (runtime_error &e) {
+                            cerr << e.what() << endl;
+                        }
+                        x = 0;
+                        break;
+                }
+                x++;
+            }
+        } else if (tok.countTokens() == 10) {
+            cout << "Savings:" << endl;
+            int x = 0;
+            while (tok.hasMoreTokens()) {
+                string info = tok.nextToken();
+                //cout << info << endl;
+                switch (x) {
+                    case 0:
+                        break;
+                    case 1:
+                        ownerOf = stoi(info);
+                        break;
+                    case 2:
+                        pinCode = info;
+                        break;
+                    case 3:
+                        id = stoi(info);
+                        break;
+                    case 4:
+                        accountnr = stoi(info);
+                        break;
+                    case 5: {
+                        stringstream is(info);
+                        is >> lastUpdate;
+                        break;
+                    }
+                    case 6:
+                        balance = stof(info);
+                        break;
+                    case 7:
+                        statementRecords.push_back(info);
+                        break;
+                    case 8:
+                        activities.push_back(new Activity(info));
+                        break;
+                    case 9:
+                        interestRate = stof(info);
+                        try {
+                        for (auto acc: _bankaccounts) {
+                            if (acc->getID() == accountnr)
+                                throw runtime_error("Bank account with ID " + to_string(acc->getID()));
+                        }
+                        _bankaccounts.push_back(new Savingsaccount( ownerOf, pinCode, id, accountnr,lastUpdate,balance,statementRecords,activities,interestRate));
+                } catch (runtime_error &e) {
+                    cerr << e.what() << endl;
+                }
+                        x = 0;
+                        break;
+                }
+                x++;
+            }
+        }
+        else{
+            cout<<"NIF"<<endl;
         }
     }
 

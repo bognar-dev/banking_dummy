@@ -16,7 +16,8 @@ CMakeFiles/Banking08.dir/bank.cpp.obj: \
  ../bank.cpp \
  ../bank.h \
  ../datetime.hpp \
- ../owner.h
+ ../owner.h \
+ ../tokenizer.hpp
 CMakeFiles/Banking08.dir/datetime.cpp.obj: \
  ../datetime.cpp \
  ../datetime.hpp
@@ -33,3 +34,6 @@ CMakeFiles/Banking08.dir/owner.cpp.obj: \
  ../datetime.hpp \
  ../owner.cpp \
  ../owner.h
+CMakeFiles/Banking08.dir/tokenizer.cpp.obj: \
+ ../tokenizer.cpp \
+ ../tokenizer.hpp

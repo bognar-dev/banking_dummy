@@ -10,6 +10,7 @@
 
 class DateTime {
     friend std::ostream& operator<<(std::ostream&, const DateTime&);
+    friend std::istream& operator>>(std::istream&, DateTime&);
 
 protected:
     int _day, _month, _year;
