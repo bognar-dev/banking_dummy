@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <ctime>
 #include "datetime.hpp"
+#include "tokenizer.hpp"
 using namespace std;
 
 #define SEC_PER_DAY  (60 * 60 * 24)
@@ -81,5 +82,40 @@ string DateTime::toString(string loc) {
     os << buffer;
 
     return os.str();
+}
+
+DateTime DateTime::parse(string inDate){
+    Tokenizer tok(inDate,"(.- :)");
+    int x = 0;
+    while(tok.hasMoreTokens()) {
+        string data = tok.nextToken();
+        //put tokens into the Datetime data
+        //switch case to 6
+        switch (x){
+            case 0:
+                _day = stoi(data);
+                break;
+            case 1:
+                _month = stoi(data);
+                break;
+            case 2:
+                _year = stoi(data);
+                break;
+            case 3:
+                _hour = stoi(data);
+                break;
+            case 4:
+                _minute = stoi(data);
+                break;
+            case 5:
+                _second = stoi(data);
+                x = 0;
+                break;
+
+        }
+        x++;
+
+    }
+    return DateTime(_day,_month,_year,_hour,_minute,_second);
 }
 

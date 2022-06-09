@@ -41,7 +41,7 @@ void bank::readFromFile(string bankaccounts, string users) {
     if (!bankacc)
         throw runtime_error("could not open bank file");
     int ownerOf;
-    string pinCode;
+    int pinCode;
     int id;
     int accountnr;
     DateTime lastUpdate;
@@ -61,14 +61,17 @@ void bank::readFromFile(string bankaccounts, string users) {
             int x = 0;
             while (tok.hasMoreTokens()) {
                 string info = tok.nextToken();
+                cout << x << endl;
                 switch (x) {
                     case 0:
+                        cout << "Type " << info << endl;
                         break;
                     case 1:
                         ownerOf = stoi(info);
+                        cout<<"Owner "<<ownerOf<<endl;
                         break;
                     case 2:
-                        pinCode = info;
+                        pinCode = stoi(info);
                         break;
                     case 3:
                         id = stoi(info);
@@ -77,19 +80,30 @@ void bank::readFromFile(string bankaccounts, string users) {
                         accountnr = stoi(info);
                         break;
                     case 5: {
-                        stringstream is(info);
-                        is >> lastUpdate;
+                        DateTime dt = dt.parse(info);
+                        lastUpdate = dt;
                         break;
                     }
                     case 6:
                         balance = stof(info);
                         break;
-                    case 7:
-                        statementRecords.push_back(info);
+                    case 7: {
+                        Tokenizer tokRecG(info, ",");
+                        while (tokRecG.hasMoreTokens()) {
+                            string record = tokRecG.nextToken();
+                            statementRecords.push_back(record);
+                        }
                         break;
-                    case 8:
-                        activities.push_back(new Activity(info));
+                    }
+                    case 8: {
+                        Tokenizer tokActG(info, ",");
+                        while (tokActG.hasMoreTokens()) {
+                            string activity = tokActG.nextToken();
+                            Activity *act = new Activity(activity);
+                            activities.push_back(act);
+                        }
                         break;
+                    }
                     case 9:
                         dispoLimit = stof(info);
                         break;
@@ -100,7 +114,20 @@ void bank::readFromFile(string bankaccounts, string users) {
                                 if (acc->getID() == accountnr)
                                     throw runtime_error("Bank account with ID " + to_string(acc->getID()));
                             }
-                            _bankaccounts.push_back(new Giro(ownerOf, pinCode,id,accountnr,lastUpdate,balance,statementRecords,activities,dispoLimit,debitInterest));
+                            _bankaccounts.push_back(
+                                    new Giro(ownerOf, pinCode, id, accountnr, lastUpdate, balance, statementRecords,
+                                             activities, dispoLimit, debitInterest));
+                            cout << "Giro created" << endl;
+                            statementRecords.clear();
+                            activities.clear();
+                            //set all giro properties to 0
+                            ownerOf = 0;
+                            pinCode = 0;
+                            id = 0;
+                            accountnr = 0;
+                            balance = 0;
+                            dispoLimit = 0;
+                            debitInterest = 0;
                         } catch (runtime_error &e) {
                             cerr << e.what() << endl;
                         }
@@ -109,20 +136,24 @@ void bank::readFromFile(string bankaccounts, string users) {
                 }
                 x++;
             }
-        } else if (tok.countTokens() == 10) {
+        } else if(tok.countTokens() == 10) {
             cout << "Savings:" << endl;
             int x = 0;
-            while (tok.hasMoreTokens()) {
+            while(tok.hasMoreTokens()){
                 string info = tok.nextToken();
                 //cout << info << endl;
+                cout << x << endl;
                 switch (x) {
-                    case 0:
+                    case 0: {
+                        cout << "Type" << info << endl;
                         break;
+                    }
                     case 1:
                         ownerOf = stoi(info);
+                        cout<<"Owner "<<ownerOf<<endl;
                         break;
                     case 2:
-                        pinCode = info;
+                        pinCode = stoi(info);
                         break;
                     case 3:
                         id = stoi(info);
@@ -131,38 +162,64 @@ void bank::readFromFile(string bankaccounts, string users) {
                         accountnr = stoi(info);
                         break;
                     case 5: {
-                        stringstream is(info);
-                        is >> lastUpdate;
+                        DateTime dt = dt.parse(info);
+                        lastUpdate = dt;
                         break;
                     }
                     case 6:
                         balance = stof(info);
                         break;
-                    case 7:
-                        statementRecords.push_back(info);
+                    case 7: {
+                        Tokenizer tokRecS(info, ",");
+                        while (tokRecS.hasMoreTokens()) {
+                            string record = tokRecS.nextToken();
+                            cout<<"record: "<<record<<endl;
+                            statementRecords.push_back(record);
+                        }
                         break;
-                    case 8:
-                        activities.push_back(new Activity(info));
+                    }
+                    case 8: {
+                        Tokenizer tokActS(info, ",");
+                        while (tokActS.hasMoreTokens()) {
+                            string activity = tokActS.nextToken();
+                            cout<<"Activity : "<<activity<<endl;
+                            Activity *act = new Activity(activity);
+                            activities.push_back(act);
+                        }
                         break;
+                    }
                     case 9:
+                        cout << "Case 9" << endl;
                         interestRate = stof(info);
                         try {
-                        for (auto acc: _bankaccounts) {
-                            if (acc->getID() == accountnr)
-                                throw runtime_error("Bank account with ID " + to_string(acc->getID()));
+                            for (auto acc: _bankaccounts) {
+                                if (acc->getID() == accountnr)
+                                    throw runtime_error("Bank account with ID " + to_string(acc->getID()));
+                            }
+                            _bankaccounts.push_back(
+                                    new Savingsaccount(ownerOf, pinCode, id, accountnr, lastUpdate, balance,
+                                                       statementRecords, activities, interestRate));
+                            cout << "Bankaccount pushes Type S" << endl;
+                            statementRecords.clear();
+                            activities.clear();
+                            //set all giro properties to 0
+                            ownerOf = 0;
+                            pinCode = 0;
+                            id = 0;
+                            accountnr = 0;
+                            balance = 0;
+                            dispoLimit = 0;
+                            debitInterest = 0;
+                        } catch (runtime_error &e) {
+                            cerr << e.what() << endl;
                         }
-                        _bankaccounts.push_back(new Savingsaccount( ownerOf, pinCode, id, accountnr,lastUpdate,balance,statementRecords,activities,interestRate));
-                } catch (runtime_error &e) {
-                    cerr << e.what() << endl;
-                }
                         x = 0;
                         break;
                 }
                 x++;
             }
-        }
-        else{
-            cout<<"NIF"<<endl;
+        } else {
+            cout << "NIF" << endl;
         }
     }
 
@@ -213,6 +270,7 @@ void bank::readFromFile(string bankaccounts, string users) {
     }
 
     _owners[0].setOwnerCount(number);
+    //_bankaccounts[0].setAccNR(accountnr);
 }
 
 
@@ -440,5 +498,22 @@ string bank::getAction(int accountID) {
     } catch (runtime_error &e) {
         cerr << e.what() << endl;
     }
+}
+
+bool bank::PinVerification(int accountNr, int pin) {
+    try {
+        for (auto &account: _bankaccounts) {
+            if (account->getID() == accountNr) {
+                if (account->getPIN() == pin) {
+                    return true;
+                }
+                throw runtime_error("Wrong pin");
+            }
+        }
+        throw runtime_error("No account was found with the id " + to_string(accountNr));
+    } catch (runtime_error &e) {
+        cerr << e.what() << endl;
+    }
+    return false;
 }
 

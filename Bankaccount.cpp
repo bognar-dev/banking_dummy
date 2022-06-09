@@ -4,18 +4,20 @@
 //TODO interst Rate, etc...
 #include <iomanip>
 #include <iostream>
+#include <ctime>
 #include "Bankaccount.h"
 
 int Bankaccount::_number = 9000;
 int Bankaccount::_accountCount = 0;
 
-string Bankaccount::randomPIN() {
-    srand((unsigned int) __TIME__);
+int Bankaccount::randomPIN() {
+    srand(time(0));
     string pin;
     for (int i = 0; i < 4; ++i) {
         pin += to_string((rand() % 10));
     }
-    return pin;
+    int res = stoi(pin);
+    return res;
 }
 
 bool Bankaccount::operator==(const Bankaccount &b) const {
@@ -42,7 +44,7 @@ string Bankaccount::toString() {
     return os.str();
 }
 
-string Bankaccount::getPIN() {
+int Bankaccount::getPIN() {
     return _pinCode;
 }
 
@@ -92,7 +94,7 @@ Giro::Giro(int owner, float startAmount, float dispolimit, float debitinterest) 
 }
 
 Giro::Giro(int ownerOf,
-           string Pin,
+           int Pin,
            int id,
            int accNr,
            DateTime lastUpdate,
@@ -100,7 +102,7 @@ Giro::Giro(int ownerOf,
            vector<string> statements,
            vector<struct Activity *> activities,
            float dispoLimit,
-           float Dispointerest): Bankaccount() {
+           float Dispointerest) : Bankaccount() {
     _owner = ownerOf;
     _pinCode = Pin;
     _id = id;
@@ -118,12 +120,20 @@ string Giro::toFile() {
     ostringstream os;
     os << "{" << "G#" << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#"
        << _balance << "#";
-    for (string &record: _statementRecords) {
-        os << record << ",";
+    if (_statementRecords.empty()) {
+        os << " ";
+    } else {
+        for (string &record: _statementRecords) {
+            os << record << ",";
+        }
     }
     os << "#";
-    for (Activity *activity: _activities) {
-        os << activity->toString() << ",";
+    if(_activities.empty()) {
+        os << " ";
+    } else {
+        for (Activity *activity: _activities) {
+            os << activity->toString() << ",";
+        }
     }
     os << "#";
     os << _dispoLimit << "#" << _debitInterest << "}";
@@ -212,12 +222,20 @@ string Savingsaccount::toFile() {
     ostringstream os;
     os << "{" << "S#" << _owner << "#" << _pinCode << "#" << _id << "#" << _accountnr << "#" << _lastUpdate << "#"
        << _balance << "#";
-    for (string &record: _statementRecords) {
-        os << record << ",";
+    if (_statementRecords.empty()) {
+        os << " ";
+    } else {
+        for (string &record: _statementRecords) {
+            os << record << ",";
+        }
     }
     os << "#";
-    for (auto &activity: _activities) {
-        os << activity->toString() << ",";
+    if (_activities.empty()) {
+        os << " ";
+    } else {
+        for (Activity *activity: _activities) {
+            os << activity->toString() << ",";
+        }
     }
     os << "#";
     os << _interestRate << "}";
@@ -272,8 +290,9 @@ void Savingsaccount::transferTo(float amount, int accountnumber, int reiceiver, 
     cerr << "Cant transfer to savingsaccount" << endl;
 }
 
-Savingsaccount::Savingsaccount(int ownerOf, string Pin, int id, int accNr, DateTime lastUpdate, float balance,
-                               vector<string> statements, vector<struct Activity *> activities, float interestRate): Bankaccount() {
+Savingsaccount::Savingsaccount(int ownerOf, int Pin, int id, int accNr, DateTime lastUpdate, float balance,
+                               vector<string> statements, vector<struct Activity *> activities, float interestRate)
+        : Bankaccount() {
     _owner = ownerOf;
     _pinCode = Pin;
     _id = id;

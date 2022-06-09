@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/nikla/Documents/Studium/PE2/banking08
+# Install script for directory: C:/Users/nikla/Documents/Studium/Banking08
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/nikla/Documents/Studium/mingw32/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/nikla/Documents/Studium/PE2/untitled/mingw64/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/nikla/Documents/Studium/PE2/banking08/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

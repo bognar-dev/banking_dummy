@@ -18,7 +18,7 @@ protected:
     static int _accountCount;
     static int _number;
     int _owner;
-    string _pinCode;
+    int _pinCode;
     int _id;
     int _accountnr;
     DateTime _lastUpdate;
@@ -33,10 +33,10 @@ public:
     void addRecord(Bankaccount* account,string record);
     string virtual toFile() = 0;
     string toString();
-    string randomPIN();
+    int randomPIN();
     int getOwner() const;
     int getID();
-    string getPIN();
+    int getPIN();
     void addActivity(Activity activity);
     vector<Activity*>getActivities();
     float balance();
@@ -59,7 +59,7 @@ protected:
 public:
     Giro(int owner,float startbalance,float dispoLimit = 0, float debitInterest = 1.5);
     Giro(int ownerOf,
-         string Pin,
+         int Pin,
          int id,
          int accNr,
          DateTime lastUpdate,
@@ -85,7 +85,7 @@ protected:
 public:
     Savingsaccount(int owner,float startAmount,float interestRate = 0);
     Savingsaccount(int ownerOf,
-         string Pin,
+         int Pin,
          int id,
          int accNr,
          DateTime lastUpdate,

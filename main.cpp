@@ -13,7 +13,7 @@ using namespace std;
 string stringInput(string message) {
     string line;
     cout << message << endl;
-    getline(cin,line);
+    getline(cin, line);
     return line;
 
 }
@@ -101,9 +101,6 @@ int stammdatenMenue() {
 
 // *******************************************************************
 int main() {
-    DateTime d(01,06,2022,13,52,41);
-
-    cout<< d.toString("en_GB.UTF8")<< endl;
     int choice;
     bank Bank("DKB");
     do {
@@ -125,7 +122,7 @@ int main() {
                     string street;
                     string postcode;
                     int nr;
-                    name =stringInput("please enter the name");
+                    name = stringInput("please enter the name");
                     street = stringInput("please enter the street");
                     nr = intInput("please enter your house number", 0);
                     postcode = stringInput("please enter the postcode");
@@ -140,15 +137,15 @@ int main() {
                 } else if (choice2 == 3) {
                     //change customer
                     int id;
-                    id = intInput("Give the userID to change the user",1);
+                    id = intInput("Give the userID to change the user", 1);
                     string name;
                     string street;
                     string postcode;
                     int nr;
-                    name =stringInput("please enter the name");
-                    street =stringInput("please enter the street");
+                    name = stringInput("please enter the name");
+                    street = stringInput("please enter the street");
                     nr = intInput("please enter your house number");
-                    postcode =stringInput("please enter the postcode");
+                    postcode = stringInput("please enter the postcode");
                     Bank.editCustomer(id, name, Address(street, nr, postcode));
 
                 } else if (choice2 == 4) {
@@ -158,16 +155,16 @@ int main() {
                     id = intInput("Give the userID to Add an account", 1);
                     balance = floatInput("give starting Balance", 0);
 
-                    do{
+                    do {
                         choice3 = intInput("for Giro enter 1, for Savingsaccount 2", 1, 2);
-                    if (choice3 == 1) {
-                        float dispolimit;
-                        dispolimit =floatInput("What is the dispolimit?",0);
-                        Bank.createGiro(id, balance, dispolimit);
-                    } else if (choice3 == 2) {
-                        Bank.createSavingsAccount(id, balance);
-                    }
-                    }while((choice3 != 1) && (choice3 != 2));
+                        if (choice3 == 1) {
+                            float dispolimit;
+                            dispolimit = floatInput("What is the dispolimit?", 0);
+                            Bank.createGiro(id, balance, dispolimit);
+                        } else if (choice3 == 2) {
+                            Bank.createSavingsAccount(id, balance);
+                        }
+                    } while ((choice3 != 1) && (choice3 != 2));
                     // final else statement add
                 } else if (choice2 == 5) {
                     // delete account
@@ -182,7 +179,12 @@ int main() {
         } else if (choice == 4) {
             float amount;
             int accountNr;
+            int PIN;
+            PIN = intInput("Please enter your PIN 4 digits", 0);
             accountNr = intInput("Which account you want to payIn? (acountNr)", 9000);
+            while (!(Bank.PinVerification(accountNr, PIN))) {
+                PIN = intInput("Wrong PIN, please try again", 0);
+            }
             amount = floatInput("please enter the amount you want to payIn", 0);
             Bank.payIn(accountNr, amount);
             // einzahlen

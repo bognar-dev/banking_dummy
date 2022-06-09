@@ -43,6 +43,7 @@ public:
     bool isCustomerValid(int userID);
     string getstatement(int accountID);
     string getAction(int accountID);
+    bool PinVerification(int accountNr,int pin);
 
 
 };

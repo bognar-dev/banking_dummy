@@ -20,7 +20,8 @@ CMakeFiles/Banking08.dir/bank.cpp.obj: \
  ../tokenizer.hpp
 CMakeFiles/Banking08.dir/datetime.cpp.obj: \
  ../datetime.cpp \
- ../datetime.hpp
+ ../datetime.hpp \
+ ../tokenizer.hpp
 CMakeFiles/Banking08.dir/main.cpp.obj: \
  ../Activity.h \
  ../Bankaccount.h \

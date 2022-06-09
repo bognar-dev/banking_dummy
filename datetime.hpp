@@ -24,5 +24,6 @@ public:
 
     int diff(DateTime dt);
     std::string toString(std::string locale);
+    DateTime parse(std::string inDate);
 };
 

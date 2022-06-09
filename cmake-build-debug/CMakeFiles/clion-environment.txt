@@ -1,4 +1,4 @@
-ToolSet: w64 6.0 (local)@C:\Users\nikla\Documents\Studium\mingw32
+ToolSet: w64 6.0 (local)@C:\Users\nikla\Documents\Studium\PE2\untitled\mingw64
 Options: 
 
 Options:
