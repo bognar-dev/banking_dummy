@@ -227,6 +227,7 @@ int main() {
         } else if (choice == 8) {
             cout << Bank.customerList() << endl;// Kundenliste anzeigen
         } else if (choice == 9) {
+
             // Kontenliste anzeigen
             cout << Bank.listOfAccounts() << endl;
         } else if (choice == 10) {  // Zinsgutschrift
