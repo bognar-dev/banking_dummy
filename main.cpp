@@ -180,10 +180,10 @@ int main() {
             float amount;
             int accountNr;
             int PIN;
-            PIN = intInput("Please enter your PIN 4 digits", 0);
             accountNr = intInput("Which account you want to payIn? (acountNr)", 9000);
+            PIN = intInput("Please enter your PIN 4 digits", 0);
             while (!(Bank.PinVerification(accountNr, PIN))) {
-                PIN = intInput("Wrong PIN, please try again", 0);
+                PIN = intInput("Wrong PIN, please try again \n To exit press 0", 0);
             }
             amount = floatInput("please enter the amount you want to payIn", 0);
             Bank.payIn(accountNr, amount);
@@ -191,7 +191,12 @@ int main() {
         } else if (choice == 5) {
             float amount;
             int accountNr;
+            int PIN;
             accountNr = intInput("Which account you want to withdrawl from? (acountNr)", 9000);
+            PIN = intInput("Please enter your PIN 4 digits", 0);
+            while (!(Bank.PinVerification(accountNr, PIN))) {
+                PIN = intInput("Wrong PIN, please try again \n To exit press 0", 0);
+            }
             amount = floatInput("please enter the amount you want to withdrawl", 0);
             Bank.withdraw(accountNr, amount);// auszahlen
         } else if (choice == 6) {
@@ -199,7 +204,12 @@ int main() {
             int accountNr;
             int accountNrTo;
             string message;
+            int PIN;
             accountNr = intInput("Which account you want to transfer from? (acountNr)", 9000);
+            PIN = intInput("Please enter your PIN 4 digits", 0);
+            while (!(Bank.PinVerification(accountNr, PIN))) {
+                PIN = intInput("Wrong PIN, please try again \n To exit press 0", 0);
+            }
             accountNrTo = intInput("Which account you want to transfer to? (acountNr)", 9000);
             amount = floatInput("please enter the amount you want to transfer", 0);
             message = stringInput("please enter a message :");
@@ -207,7 +217,12 @@ int main() {
             choice = 0;
         } else if (choice == 7) {
             int accountNr;
+            int PIN;
             accountNr = intInput("Please give the account number to get your statement", 9000);
+            PIN = intInput("Please enter your PIN 4 digits", 0);
+            while (!(Bank.PinVerification(accountNr, PIN))) {
+                PIN = intInput("Wrong PIN, please try again. Press Escape to leave", 0);
+            }
             cout << Bank.getstatement(accountNr) << endl;// Kontoauszug anzeigen
         } else if (choice == 8) {
             cout << Bank.customerList() << endl;// Kundenliste anzeigen
