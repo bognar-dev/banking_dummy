@@ -10,9 +10,18 @@ CMakeFiles/Banking08.dir/Bankaccount.cpp.obj: \
  ../Bankaccount.cpp \
  ../Bankaccount.h \
  ../datetime.hpp
+CMakeFiles/Banking08.dir/Observer.cpp.obj: \
+ ../Activity.h \
+ ../Bankaccount.h \
+ ../Observer.cpp \
+ ../Observer.h \
+ ../bank.h \
+ ../datetime.hpp \
+ ../owner.h
 CMakeFiles/Banking08.dir/bank.cpp.obj: \
  ../Activity.h \
  ../Bankaccount.h \
+ ../Observer.h \
  ../bank.cpp \
  ../bank.h \
  ../datetime.hpp \
@@ -25,6 +34,7 @@ CMakeFiles/Banking08.dir/datetime.cpp.obj: \
 CMakeFiles/Banking08.dir/main.cpp.obj: \
  ../Activity.h \
  ../Bankaccount.h \
+ ../Observer.h \
  ../bank.h \
  ../datetime.hpp \
  ../main.cpp \

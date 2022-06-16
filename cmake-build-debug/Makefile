@@ -176,6 +176,30 @@ Bankaccount.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Bankaccount.cpp.s
 .PHONY : Bankaccount.cpp.s
 
+Observer.obj: Observer.cpp.obj
+.PHONY : Observer.obj
+
+# target to build an object file
+Observer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Observer.cpp.obj
+.PHONY : Observer.cpp.obj
+
+Observer.i: Observer.cpp.i
+.PHONY : Observer.i
+
+# target to preprocess a source file
+Observer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Observer.cpp.i
+.PHONY : Observer.cpp.i
+
+Observer.s: Observer.cpp.s
+.PHONY : Observer.s
+
+# target to generate assembly for a file
+Observer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Banking08.dir\build.make CMakeFiles/Banking08.dir/Observer.cpp.s
+.PHONY : Observer.cpp.s
+
 bank.obj: bank.cpp.obj
 .PHONY : bank.obj
 
@@ -311,6 +335,9 @@ help:
 	@echo ... Bankaccount.obj
 	@echo ... Bankaccount.i
 	@echo ... Bankaccount.s
+	@echo ... Observer.obj
+	@echo ... Observer.i
+	@echo ... Observer.s
 	@echo ... bank.obj
 	@echo ... bank.i
 	@echo ... bank.s

@@ -113,6 +113,8 @@ Giro::Giro(int ownerOf,
     _activities = activities;
     _dispoLimit = dispoLimit;
     _debitInterest = Dispointerest;
+    _number++;
+    _accountCount++;
 
 }
 
@@ -198,6 +200,7 @@ void Giro::transferTo(float amount, int accountnumber, int receiver, string disc
 
 string Giro::statement() {
     ostringstream statement;
+    statement<<"Last Activity: "<<_lastUpdate.toString("en_GB.UTF8")<<endl;
     statement << setw(17) << "Date" << "|" << setw(25) << "Discription" << "|" << setw(25) << "Receiver/Sender" << "|"
               << setw(25) << "Withdrawl/Deposit" << "|";
     statement << setw(20) << "Balance" << "|" << "\n";
@@ -260,6 +263,7 @@ void Savingsaccount::withdrawl(float amount, DateTime d) {
 
 string Savingsaccount::statement() {
     ostringstream statement;
+    statement<<"Last Activity: "<<_lastUpdate.toString("en_GB.UTF8")<<endl;
     statement << setw(17) << "Date" << "|" << setw(25) << "Withdrawl/Deposit" << "|";
     statement << setw(20) << "Balance" << "\n";
     for (auto &record: _statementRecords) {
@@ -302,6 +306,8 @@ Savingsaccount::Savingsaccount(int ownerOf, int Pin, int id, int accNr, DateTime
     _statementRecords = statements;
     _activities = activities;
     _interestRate = interestRate;
+    _number++;
+    _accountCount++;
 
 
 }

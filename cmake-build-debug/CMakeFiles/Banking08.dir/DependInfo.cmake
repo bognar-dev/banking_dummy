@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/nikla/Documents/Studium/Banking08/Activity.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Activity.cpp.obj"
   "C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Bankaccount.cpp.obj"
+  "C:/Users/nikla/Documents/Studium/Banking08/Observer.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/Observer.cpp.obj"
   "C:/Users/nikla/Documents/Studium/Banking08/bank.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/bank.cpp.obj"
   "C:/Users/nikla/Documents/Studium/Banking08/datetime.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/datetime.cpp.obj"
   "C:/Users/nikla/Documents/Studium/Banking08/main.cpp" "C:/Users/nikla/Documents/Studium/Banking08/cmake-build-debug/CMakeFiles/Banking08.dir/main.cpp.obj"

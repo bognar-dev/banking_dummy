@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cfloat>
+#include "Observer.h"
 #include "bank.h"
 
 using namespace std;
@@ -71,11 +72,12 @@ int hauptMenue() {
     cout << "  (8) Show users\n";
     cout << "  (9) Show accounts\n";
     cout << " (10) Interest balance\n";
-    cout << " (11) Get Account Activities\n\n";
-    cout << " (12) Exit\n";
+    cout << " (11) Get Account Activities\n";
+    cout << " (12) Toggle autosave\n\n";
+    cout << " (13) Exit\n";
     cout << "------------------------------------------------\n";
     int choice;
-    choice = intInput("Please Choose", 1, 12);
+    choice = intInput("Please Choose", 1, 13);
     return choice;
 }
 
@@ -103,13 +105,17 @@ int stammdatenMenue() {
 int main() {
     int choice;
     bank Bank("DKB");
+    Observer obs("users.dat","data.dat");
+    Observer obs1("obsusr.dat","obsacc.dat");
     do {
         choice = hauptMenue();
         if (choice == 1) {
             Bank.readFromFile("data.dat", "users.dat");
+            Bank.notifyObservers();
             // lesen aus Datei
         } else if (choice == 2) {
             Bank.writeToFile("data.dat", "users.dat");
+            Bank.notifyObservers();
             // schreiben in Datei
         } else if (choice == 3) {
             //===========================================================
@@ -127,13 +133,14 @@ int main() {
                     nr = intInput("please enter your house number", 0);
                     postcode = stringInput("please enter the postcode");
                     Bank.newCustomer(name, Address(street, nr, postcode));
-
+                    Bank.notifyObservers();
                     //Bank.newCustomer("Hans", Address("Mullerstr",33,"41065"));
                 } else if (choice2 == 2) {
                     //delete customer
                     int id;
                     id = intInput("Give the userID to delete the user", 0);
                     Bank.removeCustomer(id);
+                    Bank.notifyObservers();
                 } else if (choice2 == 3) {
                     //change customer
                     int id;
@@ -147,6 +154,7 @@ int main() {
                     nr = intInput("please enter your house number");
                     postcode = stringInput("please enter the postcode");
                     Bank.editCustomer(id, name, Address(street, nr, postcode));
+                    Bank.notifyObservers();
 
                 } else if (choice2 == 4) {
                     int id;
@@ -161,8 +169,10 @@ int main() {
                             float dispolimit;
                             dispolimit = floatInput("What is the dispolimit?", 0);
                             Bank.createGiro(id, balance, dispolimit);
+                            Bank.notifyObservers();
                         } else if (choice3 == 2) {
                             Bank.createSavingsAccount(id, balance);
+                            Bank.notifyObservers();
                         }
                     } while ((choice3 != 1) && (choice3 != 2));
                     // final else statement add
@@ -171,6 +181,7 @@ int main() {
                     int number;
                     number = intInput("Please provide the account number to delete", 9000);
                     Bank.removeAccount(number);
+                    Bank.notifyObservers();
                 } else if (choice2 != 6) {
                     cout << "no valid input!\n";
                 }
@@ -233,13 +244,31 @@ int main() {
         } else if (choice == 10) {  // Zinsgutschrift
         } else if (choice == 11) {
             int accountNr;
+            int PIN;
             accountNr = intInput("Please give the account number to get your activities", 9000);
+            PIN = intInput("Please enter your PIN 4 digits", 0);
+            while (!(Bank.PinVerification(accountNr, PIN))) {
+                PIN = intInput("Wrong PIN, please try again. Press Escape to leave", 0);
+            }
             cout << Bank.getAction(accountNr) << endl;
             //get account activities
         } else if (choice == 0) {
-        } else if (choice != 12) {
+        } else if (choice == 12) {
+            bool save = intInput("For turning on autosave press (1) for switching off (0)",0,1);
+            if(save){
+                Bank.logInObserver(obs);
+                Bank.logInObserver(obs1);
+                cout<<"Autosave is on";
+            }
+            else{
+                Bank.logOutObserver(obs);
+                cout<<"Autosave was switched off"<<endl;
+            }
+
+        } else if (choice != 13) {
             cout << "no valid input!\n";
         }
-    } while (choice != 12);
+    } while (choice != 13);
+    //Bank.writeToFile("data.dat", "users.dat");
 }
 

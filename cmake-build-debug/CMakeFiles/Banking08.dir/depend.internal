@@ -10,9 +10,18 @@ CMakeFiles/Banking08.dir/Bankaccount.cpp.obj
  C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.cpp
  C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
  C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
+CMakeFiles/Banking08.dir/Observer.cpp.obj
+ C:/Users/nikla/Documents/Studium/Banking08/Activity.h
+ C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+ C:/Users/nikla/Documents/Studium/Banking08/Observer.cpp
+ C:/Users/nikla/Documents/Studium/Banking08/Observer.h
+ C:/Users/nikla/Documents/Studium/Banking08/bank.h
+ C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
+ C:/Users/nikla/Documents/Studium/Banking08/owner.h
 CMakeFiles/Banking08.dir/bank.cpp.obj
  C:/Users/nikla/Documents/Studium/Banking08/Activity.h
  C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+ C:/Users/nikla/Documents/Studium/Banking08/Observer.h
  C:/Users/nikla/Documents/Studium/Banking08/bank.cpp
  C:/Users/nikla/Documents/Studium/Banking08/bank.h
  C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
@@ -25,6 +34,7 @@ CMakeFiles/Banking08.dir/datetime.cpp.obj
 CMakeFiles/Banking08.dir/main.cpp.obj
  C:/Users/nikla/Documents/Studium/Banking08/Activity.h
  C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+ C:/Users/nikla/Documents/Studium/Banking08/Observer.h
  C:/Users/nikla/Documents/Studium/Banking08/bank.h
  C:/Users/nikla/Documents/Studium/Banking08/datetime.hpp
  C:/Users/nikla/Documents/Studium/Banking08/main.cpp

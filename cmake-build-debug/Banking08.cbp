@@ -92,6 +92,12 @@
 		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h">
 			<Option target="Banking08"/>
 		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Observer.cpp">
+			<Option target="Banking08"/>
+		</Unit>
+		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/Observer.h">
+			<Option target="Banking08"/>
+		</Unit>
 		<Unit filename="C:/Users/nikla/Documents/Studium/Banking08/bank.cpp">
 			<Option target="Banking08"/>
 		</Unit>

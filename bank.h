@@ -11,20 +11,24 @@
 #include "owner.h"
 #include "Bankaccount.h"
 #include "datetime.hpp"
+#include "Observer.h"
 
 using namespace std;
+class Observer;
 class bank {
-    friend Giro;
-    friend Bankaccount;
-    friend Savingsaccount;
 protected:
     vector<Bankaccount *> _bankaccounts;
     vector<owner> _owners;
     string _bankname;
     static int _usercount;
     static int _accountcount;
+    vector<Observer> _observers;
 public:
     bank(string bankName);
+    void logInObserver(Observer o);
+    void logOutObserver(Observer o);
+    void notifyObservers();
+    bool autosaveOn();
     void writeToFile(string bankaccountfile,string usersfile);
     void readFromFile(string bankaccountfile,string usersfile);
     void createGiro(int ownerID,float startAmount,float dispolimit = 0, DateTime date= DateTime());

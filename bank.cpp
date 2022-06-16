@@ -10,6 +10,7 @@
 #include <iterator>
 #include "bank.h"
 #include "tokenizer.hpp"
+#include "Observer.h"
 
 
 bank::bank(string bankName) {
@@ -68,7 +69,7 @@ void bank::readFromFile(string bankaccounts, string users) {
                         break;
                     case 1:
                         ownerOf = stoi(info);
-                        cout<<"Owner "<<ownerOf<<endl;
+                        cout << "Owner " << ownerOf << endl;
                         break;
                     case 2:
                         pinCode = stoi(info);
@@ -136,10 +137,10 @@ void bank::readFromFile(string bankaccounts, string users) {
                 }
                 x++;
             }
-        } else if(tok.countTokens() == 10) {
+        } else if (tok.countTokens() == 10) {
             cout << "Savings:" << endl;
             int x = 0;
-            while(tok.hasMoreTokens()){
+            while (tok.hasMoreTokens()) {
                 string info = tok.nextToken();
                 //cout << info << endl;
                 cout << x << endl;
@@ -150,7 +151,7 @@ void bank::readFromFile(string bankaccounts, string users) {
                     }
                     case 1:
                         ownerOf = stoi(info);
-                        cout<<"Owner "<<ownerOf<<endl;
+                        cout << "Owner " << ownerOf << endl;
                         break;
                     case 2:
                         pinCode = stoi(info);
@@ -173,7 +174,7 @@ void bank::readFromFile(string bankaccounts, string users) {
                         Tokenizer tokRecS(info, ",");
                         while (tokRecS.hasMoreTokens()) {
                             string record = tokRecS.nextToken();
-                            cout<<"record: "<<record<<endl;
+                            cout << "record: " << record << endl;
                             statementRecords.push_back(record);
                         }
                         break;
@@ -182,7 +183,7 @@ void bank::readFromFile(string bankaccounts, string users) {
                         Tokenizer tokActS(info, ",");
                         while (tokActS.hasMoreTokens()) {
                             string activity = tokActS.nextToken();
-                            cout<<"Activity : "<<activity<<endl;
+                            cout << "Activity : " << activity << endl;
                             Activity *act = new Activity(activity);
                             activities.push_back(act);
                         }
@@ -416,7 +417,6 @@ bool bank::isCustomerValid(int userID) {
 }
 
 string bank::getstatement(int accountID) {
-    //TODO: PINCODE?
     try {
         for (auto &account: _bankaccounts) {
             if (account->getID() == accountID) {
@@ -516,4 +516,39 @@ bool bank::PinVerification(int accountNr, int pin) {
     }
     return false;
 }
+
+void bank::logInObserver(Observer o) {
+    try {
+        for (auto obs: _observers) {
+            if (obs == o) {
+                throw std::runtime_error("Observer alreday logged in with ID " + to_string(o.getID()));
+            }
+        }
+        _observers.push_back(o);
+    } catch (runtime_error &e) {
+        cerr << e.what() << endl;
+    }
+}
+
+void bank::logOutObserver(Observer o) {
+
+    try {
+        for (int i = 0; i < _observers.size(); i++) {
+            if (_observers[i] == o) {
+                _observers.erase(_observers.begin() + i);
+                return;
+            }
+        }
+        throw runtime_error("no observer with id " + to_string(o.getID()));
+    } catch (runtime_error &e) {
+        cerr << e.what() << endl;
+    }
+}
+
+void bank::notifyObservers() {
+    for (auto o : _observers) {
+        o.autosave(*this);
+    }
+}
+
 
