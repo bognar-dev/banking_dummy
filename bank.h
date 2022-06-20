@@ -22,11 +22,11 @@ protected:
     string _bankname;
     static int _usercount;
     static int _accountcount;
-    vector<Observer> _observers;
+    vector<Observer*> _observers;
 public:
     bank(string bankName);
-    void logInObserver(Observer o);
-    void logOutObserver(Observer o);
+    void logInObserver(Observer *o);
+    void logOutObserver(Observer *o);
     void notifyObservers();
     bool autosaveOn();
     void writeToFile(string bankaccountfile,string usersfile);

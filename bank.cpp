@@ -517,11 +517,11 @@ bool bank::PinVerification(int accountNr, int pin) {
     return false;
 }
 
-void bank::logInObserver(Observer o) {
+void bank::logInObserver(Observer* o) {
     try {
-        for (auto obs: _observers) {
+        for (auto &obs: _observers) {
             if (obs == o) {
-                throw std::runtime_error("Observer alreday logged in with ID " + to_string(o.getID()));
+                throw std::runtime_error("Observer alreday logged in with ID " + to_string(o->getID()));
             }
         }
         _observers.push_back(o);
@@ -530,7 +530,7 @@ void bank::logInObserver(Observer o) {
     }
 }
 
-void bank::logOutObserver(Observer o) {
+void bank::logOutObserver(Observer* o) {
 
     try {
         for (int i = 0; i < _observers.size(); i++) {
@@ -539,7 +539,7 @@ void bank::logOutObserver(Observer o) {
                 return;
             }
         }
-        throw runtime_error("no observer with id " + to_string(o.getID()));
+        throw runtime_error("no observer with id " + to_string(o->getID()));
     } catch (runtime_error &e) {
         cerr << e.what() << endl;
     }
@@ -547,7 +547,7 @@ void bank::logOutObserver(Observer o) {
 
 void bank::notifyObservers() {
     for (auto o : _observers) {
-        o.autosave(*this);
+        o->autosave(*this);
     }
 }
 

@@ -25,6 +25,8 @@ Activity.h
 C:/Users/nikla/Documents/Studium/Banking08/Activity.h
 
 C:/Users/nikla/Documents/Studium/Banking08/Observer.cpp
+fstream
+-
 Observer.h
 C:/Users/nikla/Documents/Studium/Banking08/Observer.h
 
@@ -33,6 +35,26 @@ string
 -
 bank.h
 C:/Users/nikla/Documents/Studium/Banking08/bank.h
+
+C:/Users/nikla/Documents/Studium/Banking08/bank.cpp
+iostream
+-
+unistd.h
+-
+algorithm
+-
+fstream
+-
+string
+-
+iterator
+-
+bank.h
+C:/Users/nikla/Documents/Studium/Banking08/bank.h
+tokenizer.hpp
+C:/Users/nikla/Documents/Studium/Banking08/tokenizer.hpp
+Observer.h
+C:/Users/nikla/Documents/Studium/Banking08/Observer.h
 
 C:/Users/nikla/Documents/Studium/Banking08/bank.h
 vector
@@ -56,9 +78,27 @@ string
 ostream
 -
 
+C:/Users/nikla/Documents/Studium/Banking08/main.cpp
+iostream
+-
+string
+-
+cfloat
+-
+Observer.h
+C:/Users/nikla/Documents/Studium/Banking08/Observer.h
+bank.h
+C:/Users/nikla/Documents/Studium/Banking08/bank.h
+
 C:/Users/nikla/Documents/Studium/Banking08/owner.h
 string
 -
 Bankaccount.h
 C:/Users/nikla/Documents/Studium/Banking08/Bankaccount.h
+
+C:/Users/nikla/Documents/Studium/Banking08/tokenizer.hpp
+string
+-
+vector
+-
 

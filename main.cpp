@@ -105,8 +105,8 @@ int stammdatenMenue() {
 int main() {
     int choice;
     bank Bank("DKB");
-    Observer obs("users.dat","data.dat");
-    Observer obs1("obsusr.dat","obsacc.dat");
+    Observer *obs = new Filesaver("users.dat", "data.dat");
+    Observer *obs1 = new CountObserver ("count.dat");
     do {
         choice = hauptMenue();
         if (choice == 1) {
